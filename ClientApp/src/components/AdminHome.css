@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Rammetto+One&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Montserrat&family=Rammetto+One&family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    margin: 0;
+}
+.Home {
+    text-align: center;
+    background: #FFF9DF;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.Admin-head {
+    margin: 0;
+    color: #630A10;
+    text-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
+    font-family: 'Alatsi';
+    font-size: 2vw;
+    margin-bottom: 10px;
+}
+
+.Admin-head1 {
+    margin: 0;
+    color: #630A10;
+    text-shadow: 15px 15px 10px rgba(0, 0, 0, 0.25);
+    font-family: 'Alatsi';
+    font-size: 6vw;
+    margin-bottom: 20px;
+}
+
+.Admin-info {
+    color: #224957;
+    text-align: center;
+    font-family: Alatsi;
+    font-size: 22px;
+    margin: 0 0 3% 0;
+}
+
+.user-input {
+    align-items: center;
+}
+
+.input1 {
+    margin: 0 17vh 31px 17vh;
+    border-radius: 10px;
+    border: 5px solid #640000;
+    background: #FFF;
+    box-shadow: 10px 15px 10px 0px rgba(0, 0, 0, 0.25);
+    padding: 8px;
+    color: #640000;
+    font-family: Lexend Deca;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Login-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.flabel{
+    color: #224957;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+}
+
+.Login {
+    margin: 0 12vw 0 10vw;
+}
+
+.forgot {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Login-img {
+    padding: 35px;
+    border-radius: 50%;
+    background: #630A10;
+    border: none;
+    cursor: pointer;
+}
+
+.login-para {
+    color: whitesmoke;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.Footer-img {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.input2 {
+    border-radius: 10px;
+    border: 2px solid #640000;
+    background: #FFF;
+    padding: 8px;
+    color: #640000;
+    font-family: Lexend Deca;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.forgot-password {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.forgot-password-button {
+    border-radius: 10px;
+    background: #640000;
+    padding: 1vw 3vw 1vw 3vw;
+    border: 1px solid #640000;
+    cursor: pointer;
+    color: #FFF9DF;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.forgot-password-button:hover {
+    color: #640000;
+    background-color: #FFF9DF;
+    transition: 0.15s;
+}
+
+.forgot-password-button:active {
+    background-color: #640000;
+    color: #FFF9DF;
+}
+
+.verify-para {
+    color: #640000;
+    font-size: 20px;
+    font-family: 'Alatsi';
+}
+
+.forgot-password-head {
+    color: #640000;
+    font-family: 'Lexend Deca';
+}
+
+.radio-box-div {
+    display: flex;
+    column-gap: 50px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 33px;
+}
+
+.radio-box-input {
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    border: 1px solid #640000;
+    padding: 10px;
+    background: #640000;
+    border-radius: 10px;
+}
+
+.radio-box-label {
+    color: white;
+}
+
+.forgot-password-head-div {
+    display: flex;
+    justify-content: center;
+}
+
+.forgot-pass-whole-div {
+    padding: 3%;
+    margin: 5% 25% 5% 25%;
+    background: beige;
+    border: 3px solid #640000;
+    border-radius: 24px;
+}
+
+.stop-warning {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+@media (max-width: 1200px) {
+    .Footer-img {
+        opacity: 0;
+    }
+
+}
+
+/* Mobile Response */
+
+@media (max-width: 767px) {
+    .Home {
+        padding-bottom: 2vw;
+        height: 125vh;
+    }
+
+    .Admin-head1 {
+        font-size: 10vw;
+        padding-top: 20px;
+        margin-bottom: 10vw;
+    }
+
+    .Admin-head {
+        font-size: 5vw;
+        margin-bottom: 6vw;
+    }
+
+    .Admin-info {
+        font-size: 5vw;
+        margin-bottom: 10vw;
+    }
+
+    .radio-box-input {
+        width: 55%;
+    }
+
+    .input1 {
+        margin: 0px 2vw 5vh 2vw;
+        font-size: 25px;
+    }
+
+    .radio-box-div {
+        flex-direction: column;
+        row-gap: 50px;
+        margin-bottom: 0;
+        padding-bottom: 50px;
+        background: #FFF9DF;
+    }
+
+    .user-input {
+        background-color: #FFF9DF;
+    }
+
+    .Login-container {
+        flex-direction: column;
+        row-gap: 20px;
+        background-color: #FFF9DF;
+    }
+
+    .Footer-img {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    
+    .radio-box-label {
+        font-size: 3vw;
+    }
+}

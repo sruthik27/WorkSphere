@@ -1,0 +1,24 @@
+.verification-code-container{
+    display: flex;
+}
+.digit-box {
+    padding: 10px;
+    font-size: 20px;
+    margin: 5px;
+    font-family: Alatsi;
+    font-weight: 400;
+    border: solid 1px #640000;
+    border-radius: 7px;
+    background-color: #fff9df;
+    color: #640000;
+    cursor: pointer;
+}
+.digit-box:hover {
+    background-color: #640000;
+    color: #fbce84;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.verification-div {
+    display: flex;
+}

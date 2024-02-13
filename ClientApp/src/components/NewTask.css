@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Judson&family=Lexend+Deca&family=Montserrat&family=Rammetto+One&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alatsi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alatsi&family=Lexend+Deca:wght@300&display=swap');
+
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-background {
+    padding: 20px;
+    background:url('TCE_BLUR.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.form {
+    background: #FFF9DF;
+    padding: 30px;
+    border-radius: 20px;
+    margin: 30px;
+    margin-left: 300px;
+    margin-right: 300px;
+    border: 3px solid #640000;
+}
+
+.heading {
+    text-align: center;
+    color: #640000;
+    margin: 0;
+    font-family: Rammetto one;
+}
+
+.heading-line{
+    border: 1px solid #640000;
+    opacity: 1;
+}
+
+.form-class {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-family: Lexend Deca;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    color: #640000;
+}
+
+.formcontrol {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #640000;
+    cursor: pointer;
+}
+
+.task-button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+.add-button {
+    padding: 6px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #640000;
+    color: white;
+}
+
+.modalcontent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-inner {
+    position: fixed;
+    bottom: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2rem;
+    width: 40%;
+    background: #FFF9DF;
+    border: 1px solid #630A10;
+    border-radius: 20px;
+    overflow: auto;
+}
+
+.modal-header {
+    font-size: 40px;
+    font-family: 'Rammetto One';
+    color: #640000;
+}
+
+.modal-body {
+    font-size: 20px;
+    font-family: 'Lexend Deca';
+    color: #640000;
+}
+
+.modalfooter {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.close {
+    cursor: pointer;
+    float: right;
+    font-size: 1.2em;
+}
+
+.modal-title {
+    margin: 0;
+}
+
+.subtask-des {
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 25px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.subtask-des-head {
+    margin: 0;
+    font-size: 20px;
+}
+.subtask-des-des {
+    font-size: 16px;
+}
+
+.css-187mznn-MuiSlider-root {
+    color: #640000;
+}
+
+.subtask-head-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subtask-delete-btn {
+    width: 7%;
+    margin-left: 325px;
+    cursor: pointer;
+}
+
+.dropdown-check-list {
+    position: relative;
+}
+
+.dropdown-button {
+    background-color: white;
+    height: 30px;
+    width: 100%;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 23px;
+    padding-left: 10px;
+    border: 1px solid #640000;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow-y: auto;
+}
+
+.items {
+    position: absolute;
+    background-color: #fde8c5;
+    padding: 15px;
+    font-size: 16px;
+    color: #640000;
+    width: 100%;
+    overflow-y: auto;
+    max-height: 150px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 12px;
+    border: 1px solid #640000;
+    border-radius: 7px;
+}
+
+.items-field {
+    display: flex;
+    align-items: center;
+    border: none;
+    column-gap: 4px;
+    padding: 5px;
+}
+
+.items-field-selected {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+    background-color: #fff9df;
+    padding: 4px;
+    border: 1px solid #640000;
+    border-radius: 5px;
+}
+
+.go-back-button {
+    padding: 5px 15px 5px 15px;
+    border: 1px solid #640000;
+    color: #640000;
+    background-color: #fde8c5;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 1220px) {
+    .form-background {
+        background: #fcfc9e;
+    }
+}
+
+@media (max-width: 1000px) {
+    .form {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+}
+
+@media (max-width: 767px) {
+    .form{
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .heading {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 450px) {
+    .form{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .heading {
+        font-size: 20px;
+    }
+
+    .modal-inner {
+        width: 80%;
+    }
+}

@@ -1,0 +1,27 @@
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\WorkManagement.exe
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\appsettings.Development.json
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\appsettings.json
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\WorkManagement.dll
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\WorkManagement.deps.json
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\WorkManagement.runtimeconfig.json
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\WorkManagement.pdb
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\BCrypt.Net.dll
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\Firebase.Storage.dll
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\Microsoft.AspNetCore.SpaProxy.dll
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\Microsoft.EntityFrameworkCore.dll
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\Newtonsoft.Json.dll
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\Npgsql.dll
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\wwwroot\asset-manifest.json
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\wwwroot\favicon.ico
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\wwwroot\index.html
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\wwwroot\manifest.json
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\wwwroot\static\css\main.4bbc34a5.css
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\wwwroot\static\css\main.4bbc34a5.css.map
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\wwwroot\static\js\main.7bcb6f88.js
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\wwwroot\static\js\main.7bcb6f88.js.LICENSE.txt
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\wwwroot\static\js\main.7bcb6f88.js.map
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\wwwroot\static\media\Ellipse 1.6c3d027dbf485bcd5f1760aebd906469.svg
+C:\Users\sruth\AppData\Local\Temp\rider-publish7909171498807887026\wwwroot\static\media\Vector.4186c9b62ecaa8ab7893.png

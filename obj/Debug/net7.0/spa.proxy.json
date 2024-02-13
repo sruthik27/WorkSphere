@@ -1,0 +1,8 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:44487",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\sruth\\Desktop\\CSharp files\\WorkManagement\\ClientApp\\",
+"MaxTimeoutInSeconds": "120"
+}
+}
