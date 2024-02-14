@@ -1,17 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Rammetto+One&family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Rammetto+One&family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Montserrat&family=Rammetto+One&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,300..700;1,300..700&display=swap');
 
 body {
     margin: 0;
 }
 .Home {
     text-align: center;
-    background: #FFF9DF;
+    background: #5BBDE6;
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100vh;
+}
+
+.login-main {
+    height: 93%;
+    width: 100%;
+    display: flex;
+}
+
+.login-info-slide {
+    height: 100%;
+    width: 50%;
+    background: #08556D;
+    background-image: url('../Images/Login_Slide_info_background.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    box-shadow: 10px 0px 100px #08556D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.glass-info {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 75%;
+    height: 85%;
+    padding: 2vw;
+    padding-top: 5vh;
+    border-radius: 25px;
+    display: flex;
+}
+
+.glass-info-title {
+    font-size: 50px;
+    color: #EAF093;
+    font-weight: bold;
+}
+
+.login-slide {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-pad {
+    width: 75%;
+    height: 85%;
+    padding: 2vw;
+    padding-top: 5vh;
+    border-radius: 25px;
+    background: #FFF;
+    box-shadow: 0px 0px 100px #08556D;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-title-1 {
+    display: flex;
+    font-size: 35px;
+}
+
+.login-title-2 {
+    display: flex;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.login-as {
+    display: flex;
+    height: 40%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.login-Footer {
+    height: 7%;
+    width: 100%;
+    background: #002652;
+}
+
+.login-Footer-container {
+    display: flex;
+    color: #FFF;
+    font-size: 20px;
+    justify-content: space-evenly;
+    padding-top: 16px;
+}
+
+.login-title-head {
+    margin: 0;
+    cursor: pointer;
+    font-family: Rosario;
 }
 
 .Admin-head {

@@ -1,0 +1,19 @@
+import React from "react";
+import './components css/LoginSelect.css';
+
+const LoginSelect = ({ src, as, id, onClick }) => {
+
+    return (
+        <div className="select-div">
+            <div className="input-container">
+                <input type="radio" id={id} name="Login" onClick={onClick} value={as}/>
+                <div className="img-tail">
+                    <img src={src} />
+                    <label className="select-label" htmlFor={id}><h5>Login as {as}</h5></label>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default LoginSelect;

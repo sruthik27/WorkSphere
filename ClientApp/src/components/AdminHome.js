@@ -3,8 +3,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './AdminHome.css';
 import "./AdminMain.css";
-import Footer from "./Vector.png";
 import routeMappings from "../routeMappings";
+
+//compontens imports are below
+import LoginSelect from "../component/LoginSelect";
+
+//image import
+import Employee from "../Images/Employee_img.svg";
+import Manager from "../Images/Manager_img.svg";
 
 
 const AdminHome = () => {
@@ -129,14 +135,8 @@ const AdminHome = () => {
         setIsLoading(false);
     };
 
-    const HandleLoginPrinci = (e) => {
-        setIsLogin(true);
-        setWhoLogin(e.target.value);
-
-    }
-    const HandleLoginHead = (e) => {
-        setIsLogin(true);
-        setWhoLogin(e.target.value);
+    const HandleSelect = (e) => {
+        console.log(e.target.value);
     }
 
     return (
@@ -147,12 +147,47 @@ const AdminHome = () => {
                 </div>
             ) : (
                 <div className="Home">
-                    <div className="Home-Container">
-                        <div>
-                            <h1 className="Admin-head1">Thiagarajar College of Engineering</h1>
-                            <h3 className="Admin-head">Department of Modernization,Development and Restoration (DMDR)</h3>
-                            <p className="Admin-info">PROJECT MANAGEMENT PORTAL</p>
+                    <div className="login-main">
+                        <div className="login-info-slide">
+                            <div className="glass-info">
+                                <p className="glass-info-title">quote need to be selected</p>
+                                {/* <img src={} /> */}
+                            </div>
                         </div>
+                        <div className="login-slide">
+                            <div className="login-pad">
+                                <p className="login-title-1">Welcome to</p>
+                                <p className="login-title-2">SITE_NAME</p>
+                                <h5>Login as</h5>
+                                <div className="login-as">
+                                    <LoginSelect src={ Manager } as={'Manager'} id={'Manager'} onClick={HandleSelect}/>
+                                    <LoginSelect src={ Employee } as={'Employee'} id={'Employee'} onClick={HandleSelect}/>
+                                </div>
+                                <h5>----- or -----</h5>
+                                <p>Don't Have an account? <strong>Register</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="login-Footer">
+                        <div className="login-Footer-container">
+                            <p className="login-title-head">About Our Website</p>
+                            <p className="login-title-head">Terms of Service</p>
+                            <p className="login-title-head">Privacy Policy</p>
+                            <p className="login-title-head">Services Provided</p>
+                            <p className="login-title-head">Resources</p>
+                            <p className="login-title-head">Get in Touch</p>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </>
+    )
+}
+
+export default AdminHome;
+
+{/* <div className="Home">
+                    <div className="Home-Container">
                         <div className="radio-box-div">
                             <div className="radio-box-input">
                                 <input style={{cursor: 'pointer'}} type="radio" id="Princi" name="Login" onClick={HandleLoginPrinci} value="P"/>
@@ -188,16 +223,5 @@ const AdminHome = () => {
                                 <p>{inputLoginFail}</p>
                             </div>
                         ) : " "}
-                        {isLogin ? "": (
-                            <div>
-                                <img className="Footer-img" src={ Footer } alt="AdminHomeFooter"/>
-                            </div>
-                        )}
                     </div>
-                </div>
-            )}
-        </>
-    )
-}
-
-export default AdminHome;
+                </div> */}
