@@ -28,13 +28,17 @@ const AdminHome = () => {
         }
     }, [navigate]);
 
+    //old Hooks
     const [inputEmail, setInputEmail] = useState("");
     const [inputPassword, setInputPassword] = useState("");
     const [inputCheckbox, setInputCheckbox] = useState(false);
     const [inputLoginFail, setInputLoginFail] = useState("");
-    const [isLogin, setIsLogin] = useState(false);
     const [whoLogin, setWhoLogin] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+
+    //cold Hooks
+    const [isSelect, setIsSelect] = useState(false);
+    const [selectedString, setSelectedString] = useState("");
 
 
     const HandleInputEmail = (e) => {
@@ -136,6 +140,8 @@ const AdminHome = () => {
     };
 
     const HandleSelect = (e) => {
+        setIsSelect(true);
+        setSelectedString(e.target.value);
         console.log(e.target.value);
     }
 
@@ -155,17 +161,24 @@ const AdminHome = () => {
                             </div>
                         </div>
                         <div className="login-slide">
-                            <div className="login-pad">
-                                <p className="login-title-1">Welcome to</p>
-                                <p className="login-title-2">SITE_NAME</p>
-                                <h5>Login as</h5>
-                                <div className="login-as">
-                                    <LoginSelect src={ Manager } as={'Manager'} id={'Manager'} onClick={HandleSelect}/>
-                                    <LoginSelect src={ Employee } as={'Employee'} id={'Employee'} onClick={HandleSelect}/>
+                            {isSelect ?  
+                                <div className="login-pad">
+                                    <p>{selectedString}</p>
                                 </div>
-                                <h5>----- or -----</h5>
-                                <p>Don't Have an account? <strong>Register</strong></p>
-                            </div>
+                            :
+                                <div className="login-pad">
+                                    <p className="login-title-1">Welcome to</p>
+                                    <p className="login-title-2">SITE_NAME</p>
+                                    <h5>Login as</h5>
+                                    <div className="login-as">
+                                        <LoginSelect src={ Manager } as={'Manager'} id={'Manager'} onClick={HandleSelect}/>
+                                        <LoginSelect src={ Employee } as={'Employee'} id={'Employee'} onClick={HandleSelect}/>
+                                    </div>
+                                    <h5>----- or -----</h5>
+                                    <p>Don't Have an account? <strong>Register</strong></p>
+                                </div>
+                            }
+                            
                         </div>
                     </div>
                     <div className="login-Footer">
