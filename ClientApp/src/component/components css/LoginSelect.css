@@ -35,3 +35,8 @@
 input:checked + .img-tail {
     border: 5px solid #002652;
 }
+
+.imgage {
+    width: 8vw;
+}
+

@@ -36,10 +36,9 @@ const AdminHome = () => {
     const [whoLogin, setWhoLogin] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    //cold Hooks
+    //new Hooks
     const [isSelect, setIsSelect] = useState(false);
     const [selectedString, setSelectedString] = useState("");
-
 
     const HandleInputEmail = (e) => {
         setInputEmail(e.target.value);
@@ -140,10 +139,12 @@ const AdminHome = () => {
     };
 
     const HandleSelect = (e) => {
-        setIsSelect(true);
-        setSelectedString(e.target.value);
-        console.log(e.target.value);
-    }
+        setTimeout(() => {
+            setIsSelect(true);
+            setSelectedString(e.target.value);
+            console.log(e.target.value);
+        }, 1000);
+    };
 
     return (
         <>
@@ -163,13 +164,44 @@ const AdminHome = () => {
                         <div className="login-slide">
                             {isSelect ?  
                                 <div className="login-pad">
-                                    <p>{selectedString}</p>
+                                    <p className="login-title-1">Sign In as </p>
+                                    <p className="login-title-2">{selectedString}</p>
+                                    <div className="login-input-container">
+                                        <input
+                                            className="login-input"
+                                            type="email" 
+                                            value={inputEmail} 
+                                            onChange={HandleInputEmail} 
+                                            placeholder="Email" 
+                                        />
+                                        <input
+                                            className="login-input" 
+                                            type={"password"}
+                                            value={inputPassword}
+                                            onChange={HandleInputPassword}
+                                            placeholder="Password"
+                                        />
+                                    </div>
+                                    <div className="login-rem-container">
+                                        <p className="forgotPass" onClick={handleForgotPassword}>Forgot your Password?</p>
+                                        <div className="Rem-div">
+                                            <input style={{cursor: "pointer"}} type={"checkbox"} value={inputCheckbox} onClick={HandleCheckbox}/>
+                                            <label>Remember me</label>
+                                        </div>
+                                    </div>
+                                    <p>{inputLoginFail}</p>
+                                    <button className="sign-up-button" onClick={HandleSubmit} >Sign in</button>
+                                    <h5>----- or -----</h5>
+                                    <div style={{height: '22%'}}></div>
+                                    <div className="login-pad-input">
+                                        <p className="Back-button" onClick={() => setIsSelect(false)}>{"<"} Back</p>
+                                    </div>
                                 </div>
                             :
                                 <div className="login-pad">
                                     <p className="login-title-1">Welcome to</p>
                                     <p className="login-title-2">SITE_NAME</p>
-                                    <h5>Login as</h5>
+                                    <h5>Sign In as</h5>
                                     <div className="login-as">
                                         <LoginSelect src={ Manager } as={'Manager'} id={'Manager'} onClick={HandleSelect}/>
                                         <LoginSelect src={ Employee } as={'Employee'} id={'Employee'} onClick={HandleSelect}/>
