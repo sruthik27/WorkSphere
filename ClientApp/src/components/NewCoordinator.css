@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Alatsi&family=Lexend+Deca:wght@300&family=Montserrat:wght@100;400&display=swap');
 
+
+.dashBoard-Home {
+    width: 100%;
+    height: 100%;
+    background: #5BBDE6;
+    padding: 1vw;
+}
+
+{/* old css */}
 .ahome1 {
     display: grid;
     align-items: center;

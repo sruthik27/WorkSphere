@@ -1,0 +1,25 @@
+.nav-div nav {
+    display: flex;
+    background-color: #002652;
+    padding: 1vw;
+    margin: 3vh 3vh 1vh 3vh;
+    border-radius: 16px;
+}
+
+.nav-div ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    column-gap: 4vw;
+    margin-left: 2vw;
+}
+
+.nav-div li {
+    font-size: 20px;
+}
+
+.nav-div a {
+    text-decoration: none;
+    color: #EAF093;
+}

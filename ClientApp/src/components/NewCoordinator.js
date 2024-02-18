@@ -27,6 +27,10 @@ import ArrowLeft from './Arrow.gif';
 import Tooltip from './ToolTip';
 import { text, image, barcodes } from "@pdfme/schemas";
 import { generate } from "@pdfme/generator";
+
+
+//New Imports
+import NavBar from '../component/NabBar';
 class PuffLoader extends React.Component {
     render() {
         return (
@@ -348,13 +352,8 @@ const getMidnightDate = (date) => {
                     <div className="spinner"></div>
                 </div>
             ) : (
-                <div className='ahome1'>
-                    <div>
-                        <div className='head-div'>
-                            <h1 className="para">Welcome to DMDR - Head Portal</h1>
-                        </div>
-                        <hr className="heading-line"/>
-                    </div>
+                <div className='dashBoard-Home'>
+                    <NavBar />
                     <div className='container-div'>
                         {topworks.length === 0 ? (
                             <div className='active-div'>
@@ -662,3 +661,7 @@ const getMidnightDate = (date) => {
 }
 
 export default NewCoordinator;
+
+// {/* <div className='ahome1'>
+                    
+//                 </div> */}

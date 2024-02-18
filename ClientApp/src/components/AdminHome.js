@@ -11,6 +11,8 @@ import LoginSelect from "../component/LoginSelect";
 //image import
 import Employee from "../Images/Employee_img.svg";
 import Manager from "../Images/Manager_img.svg";
+import Work from "../Images/Work Annimation.gif";
+import PopUp from "../component/PopUp";
 
 
 const AdminHome = () => {
@@ -157,8 +159,9 @@ const AdminHome = () => {
                     <div className="login-main">
                         <div className="login-info-slide">
                             <div className="glass-info">
-                                <p className="glass-info-title">quote need to be selected</p>
-                                {/* <img src={} /> */}
+                                <p className="glass-info-title">Leading teams, </p>
+                                <p className="glass-info-title">achieving dreams.</p>
+                                <img className="work-img" src={Work} />
                             </div>
                         </div>
                         <div className="login-slide">
@@ -208,6 +211,7 @@ const AdminHome = () => {
                                     </div>
                                     <h5>----- or -----</h5>
                                     <p>Don't Have an account? <strong>Register</strong></p>
+                                    <PopUp>Hello</PopUp>
                                 </div>
                             }
                             
