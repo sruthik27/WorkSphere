@@ -1,0 +1,14 @@
+.Back-button {
+    margin: 0;
+    background: #002652;
+    color: white;
+    padding: 5px 9px 5px 9px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+}
+
+.Back-button:active, .Back-button:hover {
+    opacity: 0.9;
+    transition: all 300ms ease;
+}

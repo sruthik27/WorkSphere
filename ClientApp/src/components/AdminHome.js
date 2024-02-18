@@ -7,11 +7,14 @@ import routeMappings from "../routeMappings";
 
 //compontens imports are below
 import LoginSelect from "../component/LoginSelect";
+import UserInput from "../component/UserInput";
+import BlueButton from "../component/BlueButton";
 
 //image import
 import Employee from "../Images/Employee_img.svg";
 import Manager from "../Images/Manager_img.svg";
 import Work from "../Images/Work Annimation.gif";
+
 import PopUp from "../component/PopUp";
 
 
@@ -41,6 +44,12 @@ const AdminHome = () => {
     //new Hooks
     const [isSelect, setIsSelect] = useState(false);
     const [selectedString, setSelectedString] = useState("");
+    const [createLogin, setCreateLogin] = useState(false);
+    const [userName, setUserName] = useState("");
+    const [userEmailId,setUserEmailId] = useState("");
+    const [userMobileNumber, setUserMobileNumber] = useState(null);
+    const [userNewPassword, setUserNewPassword] = useState("");
+    const [userNewPasswordConfirm, setUserNewPasswordConfirm] = useState();
 
     const HandleInputEmail = (e) => {
         setInputEmail(e.target.value);
@@ -89,6 +98,12 @@ const AdminHome = () => {
 
     const HandleCheckbox = () => {
         inputCheckbox ? setInputCheckbox(false) : setInputCheckbox(true);
+    }
+
+    const HandleEnterSubmit = (event) => {
+        if(event.key === "Enter") {
+            HandleSubmit();
+        }
     }
 
     const HandleSubmit = async () => {
@@ -144,9 +159,36 @@ const AdminHome = () => {
         setTimeout(() => {
             setIsSelect(true);
             setSelectedString(e.target.value);
-            console.log(e.target.value);
         }, 1000);
     };
+
+    const HandleCreateNewLogin = () => {
+        setCreateLogin(true);
+    }
+
+    const HandleCreateNewLoginClose = () => {
+        setCreateLogin(false);
+    }
+
+    const HandleNewUserName = (e) => {
+        setUserName(e.target.value);
+    }
+
+    const HandleNewUserEmail = (e) => {
+        setUserEmailId(e.target.value);
+    }
+
+    const HandleNewUserNumber = (e) => {
+        setUserMobileNumber(e.target.value);
+    }
+
+    const HandleNewUserNewPassword = (e) => {
+        setUserNewPassword(e.target.value);
+    }
+
+    const HandleNewUserNewPasswordConfirm = (e) => {
+        setUserNewPasswordConfirm(e.target.value);
+    }
 
     return (
         <>
@@ -170,19 +212,19 @@ const AdminHome = () => {
                                     <p className="login-title-1">Sign In as </p>
                                     <p className="login-title-2">{selectedString}</p>
                                     <div className="login-input-container">
-                                        <input
-                                            className="login-input"
-                                            type="email" 
-                                            value={inputEmail} 
-                                            onChange={HandleInputEmail} 
-                                            placeholder="Email" 
+                                        <UserInput 
+                                            title={"E-mail: "}
+                                            type={"email"}
+                                            value={inputEmail}
+                                            onChange={HandleInputEmail}
+                                            placeholder={"Enter Your Email"}
                                         />
-                                        <input
-                                            className="login-input" 
+                                        <UserInput
+                                            title={"Password: "} 
                                             type={"password"}
                                             value={inputPassword}
                                             onChange={HandleInputPassword}
-                                            placeholder="Password"
+                                            placeholder={"Enter Your Password"}
                                         />
                                     </div>
                                     <div className="login-rem-container">
@@ -193,11 +235,11 @@ const AdminHome = () => {
                                         </div>
                                     </div>
                                     <p>{inputLoginFail}</p>
-                                    <button className="sign-up-button" onClick={HandleSubmit} >Sign in</button>
+                                    <button className="sign-up-button" onClick={HandleSubmit} onKeyDown={HandleEnterSubmit} tabIndex={"0"}>Sign in</button>
                                     <h5>----- or -----</h5>
                                     <div style={{height: '22%'}}></div>
                                     <div className="login-pad-input">
-                                        <p className="Back-button" onClick={() => setIsSelect(false)}>{"<"} Back</p>
+                                        <BlueButton onClick={() => setIsSelect(false)}>{"<"} Back</BlueButton>
                                     </div>
                                 </div>
                             :
@@ -210,11 +252,56 @@ const AdminHome = () => {
                                         <LoginSelect src={ Employee } as={'Employee'} id={'Employee'} onClick={HandleSelect}/>
                                     </div>
                                     <h5>----- or -----</h5>
-                                    <p>Don't Have an account? <strong>Register</strong></p>
-                                    <PopUp>Hello</PopUp>
+                                    <p>Don't Have an account? <a><strong onClick={HandleCreateNewLogin}>Register</strong></a></p>
+                                    <PopUp trigger={createLogin} style={{maxWidth: "30vw"}}>
+                                        <div className="close-div">
+                                            <BlueButton onClick={HandleCreateNewLoginClose}>Close</BlueButton>
+                                        </div>
+                                        <p>Log should be here:</p>
+                                        <h2>Create your account</h2>
+                                        <div className="create-account-div">
+                                            <UserInput 
+                                                title={"UserName: "}
+                                                type={"text"}
+                                                value={userName}
+                                                onChange={HandleNewUserName}
+                                                placeholder={"Enter your User Name"}
+                                            />
+                                            <UserInput 
+                                                title={"Email: "}
+                                                type={"email"}
+                                                value={userEmailId}
+                                                onChange={HandleNewUserEmail}
+                                                placeholder={"Enter your E-mail"}
+                                            />
+                                            <UserInput 
+                                                title={"Mobile Number: "}
+                                                type={"number"}
+                                                value={userMobileNumber}
+                                                onChange={HandleNewUserNumber}
+                                                placeholder={"Enter your Mobile number"}
+                                            />
+                                            <UserInput 
+                                                title={"Create Password: "}
+                                                type={"password"}
+                                                value={userNewPassword}
+                                                onChange={HandleNewUserNewPassword}
+                                                placeholder={"Enter your New Password"}
+                                            />
+                                            <UserInput 
+                                                title={"Confirm Password: "}
+                                                type={"password"}
+                                                value={userNewPasswordConfirm}
+                                                onChange={HandleNewUserNewPasswordConfirm}
+                                                placeholder={"Confirm Password"}
+                                            />
+                                        </div>
+                                        <div>
+                                            <BlueButton>Submit</BlueButton>
+                                        </div>
+                                    </PopUp>
                                 </div>
                             }
-                            
                         </div>
                     </div>
                     <div className="login-Footer">
@@ -234,43 +321,3 @@ const AdminHome = () => {
 }
 
 export default AdminHome;
-
-{/* <div className="Home">
-                    <div className="Home-Container">
-                        <div className="radio-box-div">
-                            <div className="radio-box-input">
-                                <input style={{cursor: 'pointer'}} type="radio" id="Princi" name="Login" onClick={HandleLoginPrinci} value="P"/>
-                                <label className="radio-box-label" htmlFor='Princi'>Login As Principal</label>
-                            </div>
-                            <div className="radio-box-input">
-                                <input style={{cursor: 'pointer'}} type="radio" id="Head" name="Login" onClick={HandleLoginHead} value="H"/>
-                                <label className="radio-box-label" htmlFor='Head'>Login As DMDR Head</label>
-                            </div>
-                        </div>
-                        {isLogin ? (
-                            <div>
-                                <div className="user-input">
-                                    <input className="input1" type="email" value={inputEmail} onChange={HandleInputEmail} placeholder="Email"/>
-                                    <input
-                                        className="input1"
-                                        type={"password"}
-                                        value={inputPassword}
-                                        onChange={HandleInputPassword}
-                                        placeholder="Password"
-                                    />
-                                </div>
-                                <div className="Login-container">
-                                    <div>
-                                        <input className="checkbox" type="checkbox" value={inputCheckbox} onClick={HandleCheckbox}/>
-                                        <label className = "flabel">Remember me</label>
-                                    </div>
-                                    <div className="Login" ><button className="Login-img" onClick={HandleSubmit}><p className = "login-para">Login</p></button></div>
-                                    <div>
-                                        <p className="flabel" onClick={handleForgotPassword}>Forgot Password</p>
-                                    </div>
-                                </div>
-                                <p>{inputLoginFail}</p>
-                            </div>
-                        ) : " "}
-                    </div>
-                </div> */}

@@ -22,11 +22,11 @@
     height: 100%;
     opacity: 0;
     transition: all 0.5s;
-    box-shadow: 0 0 10px 40px #002652;
+    box-shadow: 0 0 10px 40px #aa9999;
 }
 
 .input-container:active:after {
-    box-shadow: 0 0 0 0 #002652;
+    box-shadow: 0 0 0 0 #aa9999;
     position: absolute;
     border-radius: 10px;
     left: 0;
