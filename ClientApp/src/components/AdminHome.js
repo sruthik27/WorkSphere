@@ -45,11 +45,11 @@ const AdminHome = () => {
     const [isSelect, setIsSelect] = useState(false);
     const [selectedString, setSelectedString] = useState("");
     const [createLogin, setCreateLogin] = useState(false);
-    const [userName, setUserName] = useState("");
     const [userEmailId,setUserEmailId] = useState("");
-    const [userMobileNumber, setUserMobileNumber] = useState(null);
+    const [userAgency, setUserAgency] = useState("");
     const [userNewPassword, setUserNewPassword] = useState("");
-    const [userNewPasswordConfirm, setUserNewPasswordConfirm] = useState();
+    const [userSelectedAs, setUserSelectedAs] = useState("");
+    const [isValid, setIsVaild] = useState(true);
 
     const HandleInputEmail = (e) => {
         setInputEmail(e.target.value);
@@ -170,24 +170,42 @@ const AdminHome = () => {
         setCreateLogin(false);
     }
 
-    const HandleNewUserName = (e) => {
-        setUserName(e.target.value);
-    }
-
     const HandleNewUserEmail = (e) => {
         setUserEmailId(e.target.value);
     }
 
-    const HandleNewUserNumber = (e) => {
-        setUserMobileNumber(e.target.value);
+    const HandleNewUserAgncy = (e) => {
+        setUserAgency(e.target.value);
     }
 
     const HandleNewUserNewPassword = (e) => {
         setUserNewPassword(e.target.value);
     }
 
-    const HandleNewUserNewPasswordConfirm = (e) => {
-        setUserNewPasswordConfirm(e.target.value);
+    const HandleSelectedAs = (e) => {
+        setUserSelectedAs(e.target.value);
+    }
+
+    const HandleNewLoginSubmit = () => {
+        if(!isEmail(userEmailId)) {
+            setIsVaild(false);
+            setTimeout(() => {
+                setIsVaild(true);
+            }, 1000);
+        }
+
+        const newAccount = {
+            Email: userEmailId,
+            Agency: userAgency,
+            password: userNewPassword,
+            selectedAs: userSelectedAs
+        };
+
+        console.log(newAccount);
+        setUserEmailId("");
+        setUserNewPassword("");
+        setUserAgency("");
+        setUserSelectedAs("");
     }
 
     return (
@@ -257,16 +275,8 @@ const AdminHome = () => {
                                         <div className="close-div">
                                             <BlueButton onClick={HandleCreateNewLoginClose}>Close</BlueButton>
                                         </div>
-                                        <p>Log should be here:</p>
                                         <h2>Create your account</h2>
                                         <div className="create-account-div">
-                                            <UserInput 
-                                                title={"UserName: "}
-                                                type={"text"}
-                                                value={userName}
-                                                onChange={HandleNewUserName}
-                                                placeholder={"Enter your User Name"}
-                                            />
                                             <UserInput 
                                                 title={"Email: "}
                                                 type={"email"}
@@ -275,11 +285,11 @@ const AdminHome = () => {
                                                 placeholder={"Enter your E-mail"}
                                             />
                                             <UserInput 
-                                                title={"Mobile Number: "}
-                                                type={"number"}
-                                                value={userMobileNumber}
-                                                onChange={HandleNewUserNumber}
-                                                placeholder={"Enter your Mobile number"}
+                                                title={"Agency Name: "}
+                                                type={"text"}
+                                                value={userAgency}
+                                                onChange={HandleNewUserAgncy}
+                                                placeholder={"Enter your Agency Name"}
                                             />
                                             <UserInput 
                                                 title={"Create Password: "}
@@ -288,16 +298,20 @@ const AdminHome = () => {
                                                 onChange={HandleNewUserNewPassword}
                                                 placeholder={"Enter your New Password"}
                                             />
-                                            <UserInput 
-                                                title={"Confirm Password: "}
-                                                type={"password"}
-                                                value={userNewPasswordConfirm}
-                                                onChange={HandleNewUserNewPasswordConfirm}
-                                                placeholder={"Confirm Password"}
-                                            />
+                                            <div className="new-signup-radio">
+                                                <div className="newSign-up-input">
+                                                    <input type="radio" name="signUp" value={"manger"} onChange={HandleSelectedAs}/>
+                                                    <label htmlFor="manger">I am Manager</label>
+                                                </div>
+                                                <div className="newSign-up-input">
+                                                    <input type="radio" name="signUp" value={"employee"} onChange={HandleSelectedAs}/>
+                                                    <label htmlFor="employee">I am Employee</label>
+                                                </div>
+                                            </div>
                                         </div>
+                                        {isValid ? "" : <p>Given Email is Invalid</p>}
                                         <div>
-                                            <BlueButton>Submit</BlueButton>
+                                            <BlueButton onClick={HandleNewLoginSubmit}>Submit</BlueButton>
                                         </div>
                                     </PopUp>
                                 </div>
