@@ -194,15 +194,6 @@ body {
     margin-top: 1vw;
 }
 
-.newSign-up-input {
-    display: flex;
-    column-gap: 5px;
-    background: blue;
-    padding: 8px;
-    color: white;
-    border-radius: 8px;
-}
-
 /* {old css} */
 
 .Admin-head {

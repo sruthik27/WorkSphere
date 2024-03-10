@@ -35,7 +35,7 @@
     transition: 0s;
 }
 
-.input-container input {
+.input-container .Login-radio-input {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -63,7 +63,7 @@
     margin-top: 12px;
 }
 
-input:checked + .img-tail {
+.Login-radio-input:checked + .img-tail {
     border: 5px solid #002652;
 }
 

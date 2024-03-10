@@ -9,6 +9,7 @@ import routeMappings from "../routeMappings";
 import LoginSelect from "../component/LoginSelect";
 import UserInput from "../component/UserInput";
 import BlueButton from "../component/BlueButton";
+import CreateAsRadioButton from "../component/CreateAsRadioButton";
 
 //image import
 import Employee from "../Images/Employee_img.svg";
@@ -156,6 +157,7 @@ const AdminHome = () => {
     };
 
     const HandleSelect = (e) => {
+        console.log("Hello");
         setTimeout(() => {
             setIsSelect(true);
             setSelectedString(e.target.value);
@@ -285,11 +287,11 @@ const AdminHome = () => {
                                                 placeholder={"Enter your E-mail"}
                                             />
                                             <UserInput 
-                                                title={"Agency Name: "}
+                                                title={"Organization Name: "}
                                                 type={"text"}
                                                 value={userAgency}
                                                 onChange={HandleNewUserAgncy}
-                                                placeholder={"Enter your Agency Name"}
+                                                placeholder={"Enter your Organization Name"}
                                             />
                                             <UserInput 
                                                 title={"Create Password: "}
@@ -299,14 +301,20 @@ const AdminHome = () => {
                                                 placeholder={"Enter your New Password"}
                                             />
                                             <div className="new-signup-radio">
-                                                <div className="newSign-up-input">
-                                                    <input type="radio" name="signUp" value={"manger"} onChange={HandleSelectedAs}/>
-                                                    <label htmlFor="manger">I am Manager</label>
-                                                </div>
-                                                <div className="newSign-up-input">
-                                                    <input type="radio" name="signUp" value={"employee"} onChange={HandleSelectedAs}/>
-                                                    <label htmlFor="employee">I am Employee</label>
-                                                </div>
+                                                <CreateAsRadioButton
+                                                    name={"signUp"}
+                                                    value={"manger"}
+                                                    onChange={HandleSelectedAs}
+                                                    text={"Manager"}
+                                                    src={Manager}
+                                                />
+                                                <CreateAsRadioButton
+                                                    name={"signUp"}
+                                                    value={"employee"}
+                                                    onChange={HandleSelectedAs}
+                                                    text={"Employee"}
+                                                    src={Employee}
+                                                />
                                             </div>
                                         </div>
                                         {isValid ? "" : <p>Given Email is Invalid</p>}

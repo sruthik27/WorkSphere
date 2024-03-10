@@ -1,0 +1,47 @@
+.signUp-input[type="radio"] {
+    display: none;
+}
+
+.signUp-label {
+    display: block;
+    cursor: pointer;
+    color: #002652;
+    font-weight: 500;
+}
+
+.signUp-label .signUp-span {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px 10px 10px;
+    border-radius: 12px;
+    transition: .25s ease;
+}
+
+.signUp-span {
+    background-color: #f6f4f1;
+}
+
+.signUp-label .signUp-span:hover,
+.signUp-input[type="radio"]:checked + .signUp-span {
+    background: #c8c8e554;
+}
+
+.signUp-label .signUp-span:before {
+    content: "";
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: .25s ease;
+    box-shadow: inset 0 0 0 2px #00005c;
+}
+
+.signUp-input[type="radio"]:checked + .signUp-span:before {
+    box-shadow: inset 0 0 0 6px #00005c;
+}
+
+.radio-img {
+    width: 40px;
+    margin-right: 10px;
+}
