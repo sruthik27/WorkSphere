@@ -354,7 +354,15 @@ const getMidnightDate = (date) => {
             ) : (
                 <div className='dashBoard-Home'>
                     <NavBar />
-                    <div className='container-div'>
+                </div>
+            )}
+        </>
+    )
+}
+
+export default NewCoordinator;
+
+{/* <div className='container-div'>
                         {topworks.length === 0 ? (
                             <div className='active-div'>
                                 <h1 className='title-div'>Active Projects</h1>
@@ -400,268 +408,257 @@ const getMidnightDate = (date) => {
                                     <div id='elementId'>
                                         <h1 className="close-btn" onClick={handleClose}>x</h1>
                                         {/* Display information related to the selectedItem here */}
-                                        <h2 className='popup-head'>Work Details:</h2>
-                                        <hr className='heading-line'/>
-                                        <div className='detail-grid-1'>
-                                            <div className="detail">
-                                                <span className="label">Work Name</span>:<span className='label-inner'>{selectedItem.work_name}</span>
-                                            </div>
-                                            <div className="detail">
-                                                <span className="label">Start Date</span>:<span className='label-inner'>{selectedItem.start_date.slice(0, 10)}</span>
-                                            </div>
-                                            <div className="detail">
-                                                <span className="label">Coordinator</span>:<span className='label-inner'>{selectedItem.coordinator}</span>
-                                            </div>
-                                            {dueDateDiff < 0 && (
-                                                <div className="detail">
-                                                    <span className="label">Overdue by</span>:<span className='label-inner' style={{color: 'red'}}>{Math.abs(Math.round(dueDateDiff))} {Math.abs(Math.round(dueDateDiff)) === 1 ? 'day' : 'days'}</span>
-                                                </div>
-                                            )}
-                                            <div className="detail">
-                                                <span className="label">Due Date</span>:<span className='label-inner'>{selectedItem.due_date.slice(0, 10)}</span>
-                                            </div>
-                                            <div className="detail">
-                                                <span className="label">Worker(s)</span>:<span className='label-inner'>{selectedItem.worker_names}</span>
-                                            </div>
-                                            <div className="detail">
-                                                <span className="label">Total Expense</span>:<span className='label-inner'>₹{selectedItem.wage}</span>
-                                            </div>
+                    //                     <h2 className='popup-head'>Work Details:</h2>
+                    //                     <hr className='heading-line'/>
+                    //                     <div className='detail-grid-1'>
+                    //                         <div className="detail">
+                    //                             <span className="label">Work Name</span>:<span className='label-inner'>{selectedItem.work_name}</span>
+                    //                         </div>
+                    //                         <div className="detail">
+                    //                             <span className="label">Start Date</span>:<span className='label-inner'>{selectedItem.start_date.slice(0, 10)}</span>
+                    //                         </div>
+                    //                         <div className="detail">
+                    //                             <span className="label">Coordinator</span>:<span className='label-inner'>{selectedItem.coordinator}</span>
+                    //                         </div>
+                    //                         {dueDateDiff < 0 && (
+                    //                             <div className="detail">
+                    //                                 <span className="label">Overdue by</span>:<span className='label-inner' style={{color: 'red'}}>{Math.abs(Math.round(dueDateDiff))} {Math.abs(Math.round(dueDateDiff)) === 1 ? 'day' : 'days'}</span>
+                    //                             </div>
+                    //                         )}
+                    //                         <div className="detail">
+                    //                             <span className="label">Due Date</span>:<span className='label-inner'>{selectedItem.due_date.slice(0, 10)}</span>
+                    //                         </div>
+                    //                         <div className="detail">
+                    //                             <span className="label">Worker(s)</span>:<span className='label-inner'>{selectedItem.worker_names}</span>
+                    //                         </div>
+                    //                         <div className="detail">
+                    //                             <span className="label">Total Expense</span>:<span className='label-inner'>₹{selectedItem.wage}</span>
+                    //                         </div>
 
-                                            {advancePaid === 0 ?
-                                                <>
-                                                    <p className='label-2'>Advance Paid?
-                                                        <Switch checked={isChecked} onChange={handleToggle}/></p>
+                    //                         {advancePaid === 0 ?
+                    //                             <>
+                    //                                 <p className='label-2'>Advance Paid?
+                    //                                     <Switch checked={isChecked} onChange={handleToggle}/></p>
                                                     
-                                                </>
-                                                :
-                                                <div>
-                                                    <div className="detail" style={{marginBottom: "20px"}}>
-                                                        <span className='label'>Advance Paid</span>:<span className='label-inner'> ₹{advancePaid}</span>
-                                                    </div>
-                                                    <div className="detail">
-                                                        <span className='label'>Advance Paid Date</span>:<span className='label-inner'>{dateOfPaid.slice(0, 10)}</span>
-                                                    </div>
-                                                </div>
-                                            }
-                                            {selectedItem.bill_paid || padiBills.get(selectedItem.work_id) ?
-                                                <p className='label-2'>Bill Paid ✅</p> :
-                                                <p className='label-2'>Bill Paid? <Switch onChange={handleBill}></Switch></p>
-                                            }
-                                        </div>
-                                        {<>
-                                            <div>
-                                                {isChecked ?
-                                                    <div className='advance-paid-div'>
-                                                        <input type='number'
-                                                            placeholder='Advance to be Paid'
-                                                            className='advance-input'
-                                                            value={enteredAdvance}
-                                                            onChange={(e) => {
-                                                                setEnteredAdvance(e.target.value);
-                                                            }}/>
-                                                        <input type='date'
-                                                            value={enteredDate.toISOString().split('T')[0]}
-                                                            className='advance-date-input'
-                                                            onChange={(e) => {
-                                                                setEnteredDate(new Date(e.target.value));
-                                                            }} placeholder='Date'/>
-                                                        <button onClick={handleSubmit}
-                                                                className='advance-submit-bitton'>Submit
-                                                        </button>
-                                                    </div>
-                                                    : ''
-                                                }
-                                            </div>
-                                        </>}
-                                        <div className='popup-piechart'>
-                                            <p className='label-2'>Work Progress: </p>
-                                            <ProgressChart
-                                                percentage={selectedItem.total_subtasks !== 0 ? selectedItem.completed_subtasks : 0}
-                                            />
-                                            <p className='label-2'>Print As PDF : <button className='print-button' onClick={generatePDF}><img src={Print}
-                                            alt='print'/>
-                                            </button></p>
-                                        </div>
-                                        {<div>
-                                            <p className='label-2'>Sub Tasks: </p>
-                                            <div className='subtask-table'>
-                                                <DragDropContext onDragEnd={handleOnDragEnd}>
-                                                    <Droppable droppableId="subtasks">
-                                                        {(provided) => (
-                                                            <ol {...provided.droppableProps} ref={provided.innerRef}>
-                                                                {selectedSubtasks.map((subtask, index) => (
-                                                                    <Draggable key={subtask.task_id}
-                                                                               draggableId={String(subtask.task_id)}
-                                                                               index={index}>
-                                                                        {(provided) => (
-                                                                            <div>
-                                                                                <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-                                                                                    <li {...provided.draggableProps} {...provided.dragHandleProps}
-                                                                                        ref={provided.innerRef}>
-                                                                                        <div className='sub-star'>
-                                                                                            <div>
-                                                                                                {subtask.task_name}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </li>
-                                                                                    <p className='p-ele'>  -{subtask.weightage} %</p>
-                                                                                    <div className='undo-div'>
-                                                                                        <p      className='p-ele'>Completed: {subtask.completed
-                                                                                        ? '✅' : '❌'}</p>
-                                                                                        {subtask.completed ? (
-                                                                                            <div>
-                                                                                                <button className='undo-btn' onClick={() => HandleUndo(subtask)}>Undo</button>
-                                                                                            </div>
-                                                                                        ) : (
-                                                                                            <button className='undo-in'>Undo</button>
-                                                                                        )}
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr/>
-                                                                            </div>
-                                                                        )}
-                                                                    </Draggable>
-                                                                ))}
-                                                                {provided.placeholder}
-                                                            </ol>
-                                                        )}
-                                                    </Droppable>
-                                                </DragDropContext>
-                                            </div>
-                                            <p className='label-2'>Comments/Queries : </p>
-                                            {selectedComments.map((comment, index) =>
-                                                <CommentCard key={index} comment={comment}/>
-                                            )}
-                                        </div>
-                                        }
-                                    </div>
-                                )
-                            )}
-                        </PopUp>
-                        <div className='work-container-div'>
-                            <div className='create-work-div'>
-                                <h1 className='title-div'>Create Work</h1>
-                                <a style={{display: 'flex', justifyContent: 'center'}} href={'/NewTask'}><img
-                                    className='create-img-div' src={CreateButton} alt='create-btn'/></a>
-                            </div>
-                            <div className='work-div'>
-                                <img className='work-img-div' src={WorkImg} alt='Work'/>
-                                <a href={'/WorkReport'}>
-                                    <button className='coo-button'>WORK REPORTS</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div className='manage-work-div'>
-                            <div className='manage-agencie-div' onClick={() => {
-                                getWorkers();
-                                setIsPaneOpen(true);
-                            }}>
-                                <img className='arrow-img' src={ ArrowLeft }/>
-                                <div className='mang-div'>
-                                    <p className='mang-agen-p'>AGENCIES</p>
-                                    <img className='mange-img' src={ manageWorkers }/>
-                                </div>
-                            </div>
-                            <div className='piechart-main-div'>
-                                <h1 className='title-div'>Progress chart:</h1>
-                                <div className="piechart-div">
-                                    <div>
-                                        {CompletedPercent === 0 && ActivePercent === 0 ? 
-                                            <PieChart
-                                                data={[
-                                                    {title: 'NoWork', value: 100, color: 'rgba(0, 0, 0, 0.125)'}
-                                                ]}
-                                            />
-                                        : 
-                                            <PieChart
-                                                data={[
-                                                    {title: 'Completed', value: CompletedPercent, color: '#7cd57c'},
-                                                    {title: 'Active', value: ActivePercent, color: '#640000'},
-                                                ]}
-                                            />
-                                        }   
-                                    </div>
-                                    <div>
-                                        <div className='piechart-lable-div'>
-                                            <button className='piechart-colour-info-active'></button>
-                                            <p className='piechart-colour-char-active'>Active</p>
-                                        </div>
-                                        <div className='piechart-lable-div'>
-                                            <button className='piechart-colour-info-completed'></button>
-                                            <p className='piechart-colour-char-active'>Completed</p>
-                                        </div>
-                                        <div className='piechart-lable-div'>
-                                            <button style={{backgroundColor: 'rgba(0, 0, 0, 0.125)'}} className='piechart-colour-info-completed'></button>
-                                            <p className='piechart-colour-char-active'>No Task</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <SlidingPane
-                            className="notification-head"
-                            overlayClassName="custom-overlay"
-                            width={800}
-                            closeIcon={<img width="25" height="25"
-                                            src="https://img.icons8.com/plasticine/100/delete-sign.png"
-                                            alt="delete-sign"/>}
-                            isOpen={isPaneOpen}
-                            title="Manage Agencies"
-                            subtitle='
-                            Modify verification code & assign works'
-                            onRequestClose={() => {
-                                setIsPaneOpen(false);
-                            }}
-                        >
-                            <div className='verfication-div'>
-                                <div className='code-head-div'>
-                                    <h3 className='datepickerhead-h3'>Verification code: </h3>
-                                    <p style={{margin: '0', color: '#640000'}}>(code for agency to register)</p>
-                                </div>
-                                <div className='code-div'>
-                                    <VerificationCodeDisplay/>
-                                    <button className="update-button" onClick={updateVerificationCode}>Refresh
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="notification-inner">
-                                <div>
-                                    <table className="workers-table">
-                                        <thead>
-                                        <tr>
-                                            <th>Worker Name</th>
-                                            <th>Email</th>
-                                            <th>Phone Number</th>
-                                            <th>Assign Work</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {workers.map((worker) => (
-                                            <tr key={worker.worker_id}>
-                                                <td>{worker.worker_name}</td>
-                                                <td><a href={`mailto:${worker.email}`}>{worker.email}</a></td>
-                                                <td>{worker.phone_number}</td>
-                                                <td>
-                                                    <button onClick={() => handleAssignClick(worker.worker_id+"?"+worker.worker_name)}>Assign</button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </SlidingPane>
-                    </div>
-                </div>
-            )}
-        </>
-    )
-}
-
-export default NewCoordinator;
-
-// {/* <div className='ahome1'>
-                    
-//                 </div> */}
+                    //                             </>
+                    //                             :
+                    //                             <div>
+                    //                                 <div className="detail" style={{marginBottom: "20px"}}>
+                    //                                     <span className='label'>Advance Paid</span>:<span className='label-inner'> ₹{advancePaid}</span>
+                    //                                 </div>
+                    //                                 <div className="detail">
+                    //                                     <span className='label'>Advance Paid Date</span>:<span className='label-inner'>{dateOfPaid.slice(0, 10)}</span>
+                    //                                 </div>
+                    //                             </div>
+                    //                         }
+                    //                         {selectedItem.bill_paid || padiBills.get(selectedItem.work_id) ?
+                    //                             <p className='label-2'>Bill Paid ✅</p> :
+                    //                             <p className='label-2'>Bill Paid? <Switch onChange={handleBill}></Switch></p>
+                    //                         }
+                    //                     </div>
+                    //                     {<>
+                    //                         <div>
+                    //                             {isChecked ?
+                    //                                 <div className='advance-paid-div'>
+                    //                                     <input type='number'
+                    //                                         placeholder='Advance to be Paid'
+                    //                                         className='advance-input'
+                    //                                         value={enteredAdvance}
+                    //                                         onChange={(e) => {
+                    //                                             setEnteredAdvance(e.target.value);
+                    //                                         }}/>
+                    //                                     <input type='date'
+                    //                                         value={enteredDate.toISOString().split('T')[0]}
+                    //                                         className='advance-date-input'
+                    //                                         onChange={(e) => {
+                    //                                             setEnteredDate(new Date(e.target.value));
+                    //                                         }} placeholder='Date'/>
+                    //                                     <button onClick={handleSubmit}
+                    //                                             className='advance-submit-bitton'>Submit
+                    //                                     </button>
+                    //                                 </div>
+                    //                                 : ''
+                    //                             }
+                    //                         </div>
+                    //                     </>}
+                    //                     <div className='popup-piechart'>
+                    //                         <p className='label-2'>Work Progress: </p>
+                    //                         <ProgressChart
+                    //                             percentage={selectedItem.total_subtasks !== 0 ? selectedItem.completed_subtasks : 0}
+                    //                         />
+                    //                         <p className='label-2'>Print As PDF : <button className='print-button' onClick={generatePDF}><img src={Print}
+                    //                         alt='print'/>
+                    //                         </button></p>
+                    //                     </div>
+                    //                     {<div>
+                    //                         <p className='label-2'>Sub Tasks: </p>
+                    //                         <div className='subtask-table'>
+                    //                             <DragDropContext onDragEnd={handleOnDragEnd}>
+                    //                                 <Droppable droppableId="subtasks">
+                    //                                     {(provided) => (
+                    //                                         <ol {...provided.droppableProps} ref={provided.innerRef}>
+                    //                                             {selectedSubtasks.map((subtask, index) => (
+                    //                                                 <Draggable key={subtask.task_id}
+                    //                                                            draggableId={String(subtask.task_id)}
+                    //                                                            index={index}>
+                    //                                                     {(provided) => (
+                    //                                                         <div>
+                    //                                                             <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                    //                                                                 <li {...provided.draggableProps} {...provided.dragHandleProps}
+                    //                                                                     ref={provided.innerRef}>
+                    //                                                                     <div className='sub-star'>
+                    //                                                                         <div>
+                    //                                                                             {subtask.task_name}
+                    //                                                                         </div>
+                    //                                                                     </div>
+                    //                                                                 </li>
+                    //                                                                 <p className='p-ele'>  -{subtask.weightage} %</p>
+                    //                                                                 <div className='undo-div'>
+                    //                                                                     <p      className='p-ele'>Completed: {subtask.completed
+                    //                                                                     ? '✅' : '❌'}</p>
+                    //                                                                     {subtask.completed ? (
+                    //                                                                         <div>
+                    //                                                                             <button className='undo-btn' onClick={() => HandleUndo(subtask)}>Undo</button>
+                    //                                                                         </div>
+                    //                                                                     ) : (
+                    //                                                                         <button className='undo-in'>Undo</button>
+                    //                                                                     )}
+                    //                                                                 </div>
+                    //                                                             </div>
+                    //                                                             <hr/>
+                    //                                                         </div>
+                    //                                                     )}
+                    //                                                 </Draggable>
+                    //                                             ))}
+                    //                                             {provided.placeholder}
+                    //                                         </ol>
+                    //                                     )}
+                    //                                 </Droppable>
+                    //                             </DragDropContext>
+                    //                         </div>
+                    //                         <p className='label-2'>Comments/Queries : </p>
+                    //                         {selectedComments.map((comment, index) =>
+                    //                             <CommentCard key={index} comment={comment}/>
+                    //                         )}
+                    //                     </div>
+                    //                     }
+                    //                 </div>
+                    //             )
+                    //         )}
+                    //     </PopUp>
+                    //     <div className='work-container-div'>
+                    //         <div className='create-work-div'>
+                    //             <h1 className='title-div'>Create Work</h1>
+                    //             <a style={{display: 'flex', justifyContent: 'center'}} href={'/NewTask'}><img
+                    //                 className='create-img-div' src={CreateButton} alt='create-btn'/></a>
+                    //         </div>
+                    //         <div className='work-div'>
+                    //             <img className='work-img-div' src={WorkImg} alt='Work'/>
+                    //             <a href={'/WorkReport'}>
+                    //                 <button className='coo-button'>WORK REPORTS</button>
+                    //             </a>
+                    //         </div>
+                    //     </div>
+                    //     <div className='manage-work-div'>
+                    //         <div className='manage-agencie-div' onClick={() => {
+                    //             getWorkers();
+                    //             setIsPaneOpen(true);
+                    //         }}>
+                    //             <img className='arrow-img' src={ ArrowLeft }/>
+                    //             <div className='mang-div'>
+                    //                 <p className='mang-agen-p'>AGENCIES</p>
+                    //                 <img className='mange-img' src={ manageWorkers }/>
+                    //             </div>
+                    //         </div>
+                    //         <div className='piechart-main-div'>
+                    //             <h1 className='title-div'>Progress chart:</h1>
+                    //             <div className="piechart-div">
+                    //                 <div>
+                    //                     {CompletedPercent === 0 && ActivePercent === 0 ? 
+                    //                         <PieChart
+                    //                             data={[
+                    //                                 {title: 'NoWork', value: 100, color: 'rgba(0, 0, 0, 0.125)'}
+                    //                             ]}
+                    //                         />
+                    //                     : 
+                    //                         <PieChart
+                    //                             data={[
+                    //                                 {title: 'Completed', value: CompletedPercent, color: '#7cd57c'},
+                    //                                 {title: 'Active', value: ActivePercent, color: '#640000'},
+                    //                             ]}
+                    //                         />
+                    //                     }   
+                    //                 </div>
+                    //                 <div>
+                    //                     <div className='piechart-lable-div'>
+                    //                         <button className='piechart-colour-info-active'></button>
+                    //                         <p className='piechart-colour-char-active'>Active</p>
+                    //                     </div>
+                    //                     <div className='piechart-lable-div'>
+                    //                         <button className='piechart-colour-info-completed'></button>
+                    //                         <p className='piechart-colour-char-active'>Completed</p>
+                    //                     </div>
+                    //                     <div className='piechart-lable-div'>
+                    //                         <button style={{backgroundColor: 'rgba(0, 0, 0, 0.125)'}} className='piechart-colour-info-completed'></button>
+                    //                         <p className='piechart-colour-char-active'>No Task</p>
+                    //                     </div>
+                    //                 </div>
+                    //             </div>
+                    //         </div>
+                    //     </div>
+                    // </div>
+                    // <div>
+                    //     <SlidingPane
+                    //         className="notification-head"
+                    //         overlayClassName="custom-overlay"
+                    //         width={800}
+                    //         closeIcon={<img width="25" height="25"
+                    //                         src="https://img.icons8.com/plasticine/100/delete-sign.png"
+                    //                         alt="delete-sign"/>}
+                    //         isOpen={isPaneOpen}
+                    //         title="Manage Agencies"
+                    //         subtitle='
+                    //         Modify verification code & assign works'
+                    //         onRequestClose={() => {
+                    //             setIsPaneOpen(false);
+                    //         }}
+                    //     >
+                    //         <div className='verfication-div'>
+                    //             <div className='code-head-div'>
+                    //                 <h3 className='datepickerhead-h3'>Verification code: </h3>
+                    //                 <p style={{margin: '0', color: '#640000'}}>(code for agency to register)</p>
+                    //             </div>
+                    //             <div className='code-div'>
+                    //                 <VerificationCodeDisplay/>
+                    //                 <button className="update-button" onClick={updateVerificationCode}>Refresh
+                    //                 </button>
+                    //             </div>
+                    //         </div>
+                    //         <div className="notification-inner">
+                    //             <div>
+                    //                 <table className="workers-table">
+                    //                     <thead>
+                    //                     <tr>
+                    //                         <th>Worker Name</th>
+                    //                         <th>Email</th>
+                    //                         <th>Phone Number</th>
+                    //                         <th>Assign Work</th>
+                    //                     </tr>
+                    //                     </thead>
+                    //                     <tbody>
+                    //                     {workers.map((worker) => (
+                    //                         <tr key={worker.worker_id}>
+                    //                             <td>{worker.worker_name}</td>
+                    //                             <td><a href={`mailto:${worker.email}`}>{worker.email}</a></td>
+                    //                             <td>{worker.phone_number}</td>
+                    //                             <td>
+                    //                                 <button onClick={() => handleAssignClick(worker.worker_id+"?"+worker.worker_name)}>Assign</button>
+                    //                             </td>
+                    //                         </tr>
+                    //                     ))}
+                    //                     </tbody>
+                    //                 </table>
+                    //             </div>
+                    //         </div>
+                    //     </SlidingPane>
+                    // </div> */}

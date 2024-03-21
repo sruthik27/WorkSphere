@@ -11,15 +11,18 @@ const NavBar = () => {
                         <Link to={"/Home"}>Home</Link>
                     </li>
                     <li>
-                        <Link to={"/NewTask"}>Create Work</Link>
+                        <Link to={"/Work"}>Work</Link>
                     </li>
                     <li>
-                        <Link to={"/Coordinator"}>View Work</Link>
+                        <Link to={"/Workers"}>Workers</Link>
                     </li>
                     <li>
-                        <Link to={"/WorkReport"}>Reports</Link>
+                        <Link to={"/Reports"}>Reports</Link>
                     </li>
                 </ul>
+                <div>
+                    <p>K</p>
+                </div>
             </nav>
         </div>
     );
