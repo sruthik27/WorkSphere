@@ -8,20 +8,24 @@ import WorkReport from './components/WorkReport';
 import NewCoordinator from './components/NewCoordinator';
 import ResetPassword from './components/ResetPassword';
 import NewAdmin from "./components/NewAdmin";
+import { AuthContextProvider } from './context/AuthContext';
+import Protected from './context/Protected';
 
 function App() {
   return (
     <div>
-      <Routes>
-        <Route path='/' element={ <AdminHome/> }/>
-        <Route path='/AdminMain' element={ <AdminMain/> }/>
-        <Route path='/coordinator' element={ <Coordinator/> }/>
-        <Route path='/HeadPortal' element={ <NewCoordinator/> }/>
-        <Route path='/AdminPortal' element={ <NewAdmin/> }/>
-        <Route path='/NewTask' element={ <NewTask/> }/>
-        <Route path='/WorkReport' element={ <WorkReport/> }/>
-        <Route path='/ResetPassword/:id' element={ <ResetPassword/> }/>
-      </Routes>
+      <AuthContextProvider>
+        <Routes>
+          <Route path='/' element={ <AdminHome/> }/>
+          <Route path='/AdminMain' element={ <AdminMain/> }/>
+          <Route path='/coordinator' element={ <Coordinator/> }/>
+          <Route path='/ManagerPortal' element={ <Protected><NewCoordinator/></Protected> }/>
+          <Route path='/AdminPortal' element={ <Protected><NewAdmin/></Protected> }/>
+          <Route path='/NewTask' element={ <Protected><NewTask/> </Protected>}/>
+          <Route path='/WorkReport' element={ <Protected><WorkReport/></Protected> }/>
+          <Route path='/ResetPassword/:id' element={ <ResetPassword/> }/>
+        </Routes>
+      </AuthContextProvider>
     </div>
     
   );

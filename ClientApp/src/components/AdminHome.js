@@ -6,7 +6,7 @@ import "./AdminMain.css";
 import routeMappings from "../routeMappings";
 
 //compontens imports are below
-import LoginSelect from "../component/LoginSelect";
+import SignInAsButton from "../component/SignInAsButton";
 import UserInput from "../component/UserInput";
 import BlueButton from "../component/BlueButton";
 import CreateAsRadioButton from "../component/CreateAsRadioButton";
@@ -17,6 +17,7 @@ import Manager from "../Images/Manager_img.svg";
 import Work from "../Images/Work Annimation.gif";
 
 import PopUp from "../component/PopUp";
+import { UserAuth } from "../context/AuthContext";
 
 
 const AdminHome = () => {
@@ -43,8 +44,6 @@ const AdminHome = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     //new Hooks
-    const [isSelect, setIsSelect] = useState(false);
-    const [selectedString, setSelectedString] = useState("");
     const [createLogin, setCreateLogin] = useState(false);
     const [userEmailId,setUserEmailId] = useState("");
     const [userAgency, setUserAgency] = useState("");
@@ -156,14 +155,6 @@ const AdminHome = () => {
         setIsLoading(false);
     };
 
-    const HandleSelect = (e) => {
-        console.log("Hello");
-        setTimeout(() => {
-            setIsSelect(true);
-            setSelectedString(e.target.value);
-        }, 1000);
-    };
-
     const HandleCreateNewLogin = () => {
         setCreateLogin(true);
     }
@@ -210,6 +201,23 @@ const AdminHome = () => {
         setUserSelectedAs("");
     }
 
+    //google signin
+    const { googleSignIn, user } = UserAuth();
+    
+    useEffect(() => {
+        if(user != null) {
+            navigate('/ManagerPortal');
+        }
+    }, [user]);
+
+    const handleGoogleSignIn = async () => {
+        try {
+            await googleSignIn();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             {isLoading ? (
@@ -226,104 +234,93 @@ const AdminHome = () => {
                                 <img className="work-img" src={Work} />
                             </div>
                         </div>
-                        <div className="login-slide">
-                            {isSelect ?  
-                                <div className="login-pad">
-                                    <p className="login-title-1">Sign In as </p>
-                                    <p className="login-title-2">{selectedString}</p>
-                                    <div className="login-input-container">
+                        <div className="login-slide"> 
+                            <div className="login-pad">
+                                <p className="login-title-1">Welcome to</p>
+                                <p className="login-title-2">SITE_NAME</p>
+                                <h5>Sign In as</h5>
+                                <div className="login-input-container">
+                                    <UserInput 
+                                        title={"E-mail: "}
+                                        type={"email"}
+                                        value={inputEmail}
+                                        onChange={HandleInputEmail}
+                                        placeholder={"Enter Your Email"}
+                                    />
+                                    <UserInput
+                                        title={"Password: "} 
+                                        type={"password"}
+                                        value={inputPassword}
+                                        onChange={HandleInputPassword}
+                                        placeholder={"Enter Your Password"}
+                                    />
+                                </div>
+                                <div className="login-rem-container">
+                                    <p className="forgotPass" onClick={handleForgotPassword}>Forgot your Password?</p>
+                                    <div className="Rem-div">
+                                        <input style={{cursor: "pointer"}} type={"checkbox"} value={inputCheckbox} onClick={HandleCheckbox}/>
+                                        <label>Remember me</label>
+                                    </div>
+                                </div>
+                                <p>{inputLoginFail}</p>
+                                <button className="sign-up-button" onClick={HandleSubmit} onKeyDown={HandleEnterSubmit} tabIndex={"0"}>Sign in</button>
+                                <h5>----- or -----</h5>
+                                <p>Don't Have an account? <a><strong onClick={HandleCreateNewLogin}>Register</strong></a></p>
+
+                                <SignInAsButton 
+                                    value={"Google SignIn"}
+                                    onClick={handleGoogleSignIn}
+                                />
+                                <PopUp trigger={createLogin} style={{maxWidth: "30vw"}}>
+                                    <div className="close-div">
+                                        <BlueButton onClick={HandleCreateNewLoginClose}>Close</BlueButton>
+                                    </div>
+                                    <h2>Create your account</h2>
+                                    <div className="create-account-div">
                                         <UserInput 
-                                            title={"E-mail: "}
+                                            title={"Email: "}
                                             type={"email"}
-                                            value={inputEmail}
-                                            onChange={HandleInputEmail}
-                                            placeholder={"Enter Your Email"}
+                                            value={userEmailId}
+                                            onChange={HandleNewUserEmail}
+                                            placeholder={"Enter your E-mail"}
                                         />
-                                        <UserInput
-                                            title={"Password: "} 
+                                        <UserInput 
+                                            title={"Organization Name: "}
+                                            type={"text"}
+                                            value={userAgency}
+                                            onChange={HandleNewUserAgncy}
+                                            placeholder={"Enter your Organization Name"}
+                                        />
+                                        <UserInput 
+                                            title={"Create Password: "}
                                             type={"password"}
-                                            value={inputPassword}
-                                            onChange={HandleInputPassword}
-                                            placeholder={"Enter Your Password"}
+                                            value={userNewPassword}
+                                            onChange={HandleNewUserNewPassword}
+                                            placeholder={"Enter your New Password"}
                                         />
-                                    </div>
-                                    <div className="login-rem-container">
-                                        <p className="forgotPass" onClick={handleForgotPassword}>Forgot your Password?</p>
-                                        <div className="Rem-div">
-                                            <input style={{cursor: "pointer"}} type={"checkbox"} value={inputCheckbox} onClick={HandleCheckbox}/>
-                                            <label>Remember me</label>
-                                        </div>
-                                    </div>
-                                    <p>{inputLoginFail}</p>
-                                    <button className="sign-up-button" onClick={HandleSubmit} onKeyDown={HandleEnterSubmit} tabIndex={"0"}>Sign in</button>
-                                    <h5>----- or -----</h5>
-                                    <div style={{height: '22%'}}></div>
-                                    <div className="login-pad-input">
-                                        <BlueButton onClick={() => setIsSelect(false)}>{"<"} Back</BlueButton>
-                                    </div>
-                                </div>
-                            :
-                                <div className="login-pad">
-                                    <p className="login-title-1">Welcome to</p>
-                                    <p className="login-title-2">SITE_NAME</p>
-                                    <h5>Sign In as</h5>
-                                    <div className="login-as">
-                                        <LoginSelect src={ Manager } as={'Manager'} id={'Manager'} onClick={HandleSelect}/>
-                                        <LoginSelect src={ Employee } as={'Employee'} id={'Employee'} onClick={HandleSelect}/>
-                                    </div>
-                                    <h5>----- or -----</h5>
-                                    <p>Don't Have an account? <a><strong onClick={HandleCreateNewLogin}>Register</strong></a></p>
-                                    <PopUp trigger={createLogin} style={{maxWidth: "30vw"}}>
-                                        <div className="close-div">
-                                            <BlueButton onClick={HandleCreateNewLoginClose}>Close</BlueButton>
-                                        </div>
-                                        <h2>Create your account</h2>
-                                        <div className="create-account-div">
-                                            <UserInput 
-                                                title={"Email: "}
-                                                type={"email"}
-                                                value={userEmailId}
-                                                onChange={HandleNewUserEmail}
-                                                placeholder={"Enter your E-mail"}
+                                        <div className="new-signup-radio">
+                                            <CreateAsRadioButton
+                                                name={"signUp"}
+                                                value={"manger"}
+                                                onChange={HandleSelectedAs}
+                                                text={"Manager"}
+                                                src={Manager}
                                             />
-                                            <UserInput 
-                                                title={"Organization Name: "}
-                                                type={"text"}
-                                                value={userAgency}
-                                                onChange={HandleNewUserAgncy}
-                                                placeholder={"Enter your Organization Name"}
+                                            <CreateAsRadioButton
+                                                name={"signUp"}
+                                                value={"employee"}
+                                                onChange={HandleSelectedAs}
+                                                text={"Employee"}
+                                                src={Employee}
                                             />
-                                            <UserInput 
-                                                title={"Create Password: "}
-                                                type={"password"}
-                                                value={userNewPassword}
-                                                onChange={HandleNewUserNewPassword}
-                                                placeholder={"Enter your New Password"}
-                                            />
-                                            <div className="new-signup-radio">
-                                                <CreateAsRadioButton
-                                                    name={"signUp"}
-                                                    value={"manger"}
-                                                    onChange={HandleSelectedAs}
-                                                    text={"Manager"}
-                                                    src={Manager}
-                                                />
-                                                <CreateAsRadioButton
-                                                    name={"signUp"}
-                                                    value={"employee"}
-                                                    onChange={HandleSelectedAs}
-                                                    text={"Employee"}
-                                                    src={Employee}
-                                                />
-                                            </div>
                                         </div>
-                                        {isValid ? "" : <p>Given Email is Invalid</p>}
-                                        <div>
-                                            <BlueButton onClick={HandleNewLoginSubmit}>Submit</BlueButton>
-                                        </div>
-                                    </PopUp>
-                                </div>
-                            }
+                                    </div>
+                                    {isValid ? "" : <p>Given Email is Invalid</p>}
+                                    <div>
+                                        <BlueButton onClick={HandleNewLoginSubmit}>Submit</BlueButton>
+                                    </div>
+                                </PopUp>
+                            </div>
                         </div>
                     </div>
                     <div className="login-Footer">
