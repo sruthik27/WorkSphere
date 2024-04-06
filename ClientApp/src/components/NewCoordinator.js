@@ -354,6 +354,7 @@ const getMidnightDate = (date) => {
             ) : (
                 <div className='dashBoard-Home'>
                     <NavBar />
+                    <h1>HEllo World!</h1>
                 </div>
             )}
         </>
