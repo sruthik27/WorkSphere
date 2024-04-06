@@ -12,11 +12,7 @@ const Coordinator = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!location.state || !location.state.fromAdminHome) {
-      navigate('/');
-    } else {
       fetchData();
-    }
   }, []);
 
   const fetchData = async () => {

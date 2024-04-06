@@ -73,7 +73,7 @@ const NewCoordinator = () => {
     const [padiBills, setPaidBills] = useState(new Map());
 
     useEffect(() => {
-        if (!location.state || !location.state.fromAdminHome) {
+        if (false) {
             navigate('/');
         } else {
             setLoading(true);
@@ -324,7 +324,7 @@ const getMidnightDate = (date) => {
     }
 
     const HandleForward = () => {
-        navigate(routeMappings["bHWtcH10="], {state: {fromAdminHome: true}});
+        navigate(routeMappings["bHWtcH10="], );
     }
 
     const handleAssignClick = (workerString) => {

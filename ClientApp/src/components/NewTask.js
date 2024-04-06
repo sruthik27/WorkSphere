@@ -183,7 +183,7 @@ const NewTask = (props) => {
         setCoordinator("");
         setIsLoading(true);
 
-        navigate(routeMappings["bHWtcH10="], {state: {fromAdminHome: true}});
+        navigate(routeMappings["bHWtcH10="], );
     };
 
     const handleSliderChange = (index) => (event, newValue) => {

@@ -24,17 +24,6 @@ const AdminHome = () => {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const rememberMe = document.cookie;
-        if (rememberMe.includes("rememberAMe=true")) {
-            // Use the obfuscated name for redirection
-            navigate(routeMappings["aGVsbG9="],{ state: { fromAdminHome: true } });
-        }
-        else if (rememberMe.includes("rememberCMe")) {
-            navigate(routeMappings["Csjdjovn="],{ state: { fromAdminHome: true } });
-        }
-    }, [navigate]);
-
     //old Hooks
     const [inputEmail, setInputEmail] = useState("");
     const [inputPassword, setInputPassword] = useState("");
@@ -136,7 +125,7 @@ const AdminHome = () => {
                         setRememberMeCookie(data.where);
                     }
                     // Navigate to the specified route using React Router
-                    navigate(data.redirectTo, {state: {fromAdminHome: true}});
+                    navigate(data.redirectTo);
 
                 } else {
                     // console.log('Authentication failed');

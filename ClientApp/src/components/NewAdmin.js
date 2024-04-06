@@ -60,7 +60,7 @@ const NewAdmin = () => {
     
 
     useEffect(() => {
-        if (!location.state || !location.state.fromAdminHome) {
+        if (false) {
             navigate('/');
         } else {
             setLoading(true);

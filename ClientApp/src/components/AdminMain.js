@@ -9,16 +9,11 @@ import EXCEL from './excel.png';
 const AdminMain = () => {
     const [itemData, setItemData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const location = useLocation();
     const navigate = useNavigate();
 
     
     useEffect(() => {
-        if (!location.state || !location.state.fromAdminHome) {
-            navigate('/');
-        } else {
             fetchData();
-        }
     }, []);
 
     const fetchData = async () => {
