@@ -2,15 +2,12 @@ import React, {Component} from 'react';
 import PopUp from "./PopUp";
 import ProgressChart from './ProgressChart';
 import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd";
-import './TaskTable.css';
-import './AdminHome.css';
-import './NewCoordinator.css';
 import CommentBox from './CommentBox';
 import CommentCard from './CommentCard';
 import Switch from '@mui/material/Switch';
 import {Puff} from 'react-loader-spinner';
 import Template from './BasePdf';
-import Print from "./print.svg";
+
 import { text, image, barcodes } from "@pdfme/schemas";
 import { generate } from "@pdfme/generator";
 
@@ -393,7 +390,7 @@ class TaskTable extends Component {
                                             </div>
                                             <div className="detail">
                                                 <span className="label">Print As PDF</span>:
-                                                <button className='print-button' onClick={this.generatePDF}><img src={Print} alt='print'/></button>
+                                                <button className='print-button' onClick={this.generatePDF}></button>
                                             </div>
                                         </>
                                     }
@@ -423,7 +420,7 @@ class TaskTable extends Component {
                                         percentage={selectedItem.total_subtasks !== 0 ? selectedItem.completed_subtasks : 0}
                                     />
                                     {this.state.editable ? <p>{""}</p> : <CommentBox workid={selectedItem.work_id}/>}
-                                    {this.state.editable ? <p className='label-2'>Print As PDF : <button className='print-button' onClick={this.generatePDF}><img src={Print} alt='print'/></button></p> : ""}
+                                    {this.state.editable ? <p className='label-2'>Print As PDF : <button className='print-button' onClick={this.generatePDF}></button></p> : ""}
                                 </div>
                             </div>
                             {this.state.editable ?

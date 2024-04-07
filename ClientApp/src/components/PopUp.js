@@ -1,5 +1,4 @@
 import React from "react";
-import "./AdminMain.css";
 
 const PopUp = (props) => {
    return(props.trigger) ? (

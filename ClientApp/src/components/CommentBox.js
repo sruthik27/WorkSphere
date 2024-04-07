@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./AdminMain.css";
 
 const CommentBox = (props) => {
     const [comment, setComment] = useState("");  
