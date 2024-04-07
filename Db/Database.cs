@@ -10,7 +10,7 @@ public class DefaultDbContext : DbContext
     {
     }
     
-    public DbSet<Login> Logins { get; set; }
+    public DbSet<User> Users { get; set; }
     public DbSet<Work> Works { get; set; }
 
     public DbSet<SubTask> Tasks { get; set; }
@@ -29,7 +29,7 @@ public class DefaultDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(@"Host=silly-zebu-5404.8nk.cockroachlabs.cloud;Port=26257;Database=workmanagementdb;Username=alpha;Password=sY8Y8hOdvXXYRoEyYJG_jw;
+        optionsBuilder.UseNpgsql(@"Host=workmanagement-3927.7s5.aws-ap-south-1.cockroachlabs.cloud;Port=26257;Database=workmanagement;Username=developers;Password=WNF8dqh-e7aPTACG0DEJUQ;
         SSL Mode = VerifyCA;");
     }
 }
