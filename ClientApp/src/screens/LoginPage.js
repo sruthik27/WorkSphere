@@ -1,9 +1,7 @@
 import React, {useEffect} from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './AdminHome.css';
-import "./AdminMain.css";
-import routeMappings from "../routeMappings";
+import './screen css/LoginPage.css';
 
 //compontens imports are below
 import SignInAsButton from "../component/SignInAsButton";
@@ -20,7 +18,7 @@ import PopUp from "../component/PopUp";
 import { UserAuth } from "../context/AuthContext";
 
 
-const AdminHome = () => {
+const LoginPage = () => {
 
     const navigate = useNavigate();
 
@@ -328,4 +326,4 @@ const AdminHome = () => {
     )
 }
 
-export default AdminHome;
+export default LoginPage;

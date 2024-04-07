@@ -1,8 +1,7 @@
 import React, {useEffect} from "react";
-import './AdminHome.css';
+// import './AdminHome.css';
 import { useState } from "react";
 import { useParams } from 'react-router-dom';
-import Stop from './Stop.gif';
 import routeMappings from "../routeMappings";
 
 const ResetPassword = () => {
@@ -136,7 +135,6 @@ const ResetPassword = () => {
                     </div>
                 ) : (
                     <div className="stop-warning">
-                        <img src={Stop} />
                         <p className="verify-para">This Link Is Vailed Only One Time To Reset Again Click Forgot Password Again</p>
                     </div>
                 )}

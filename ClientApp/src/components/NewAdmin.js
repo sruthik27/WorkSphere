@@ -2,24 +2,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useLocation, useNavigate, Link} from "react-router-dom";
 import routeMappings from "../routeMappings";
-import "./AdminMain.css";
-import "./NewCoordinator.css";
-import "./TaskTable.css";
-import WorkImg from "./work_img.gif";
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import Flag from "./flag_icon.svg";
 import {PieChart} from 'react-minimal-pie-chart';
 import ProgressChart from './ProgressChart';
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import PopUp from './PopUp';
 import {Puff} from 'react-loader-spinner';
-import Print from "./print.svg";
 import Template from './BasePdf';
 import CommentBox from "./CommentBox";
-import noData from './noDataInActive.png';
-import manageWorkers from './ManageWorkes.png';
-import ArrowLeft from './Arrow.gif';
 import Tooltip from './ToolTip';
 import { text, image, barcodes } from "@pdfme/schemas";
 import { generate } from "@pdfme/generator";
@@ -254,7 +245,6 @@ const getMidnightDate = (date) => {
                         {topworks.length === 0 ? (
                             <div className='active-div'>
                                 <h1 className='title-div'>Active Projects</h1>
-                                <img style={{width: "90%"}} src={ noData } />
                                 <p className='notask-p'>No Active Task Assigned</p>
                                 <button className='view-all-btn' onClick={HandleForward}>VIEW ALL &gt;</button>
                             </div>
@@ -270,7 +260,7 @@ const getMidnightDate = (date) => {
                                                 }}>{x.work_name.slice(0,12)}</h2>
                                             </Tooltip>
                                             <div className='date-div'>
-                                                <img style={{width: '22px', marginRight: '10px'}} src={Flag}/>
+                                                
                                                 <h2 className='active-title-date-h2'>{new Date(x.due_date).toLocaleDateString('en-US', {
                                                     month: 'long',
                                                     day: 'numeric'
@@ -332,7 +322,7 @@ const getMidnightDate = (date) => {
                                         </div>
                                         <div className="detail">
                                             <span className="label">Print As PDF</span>:
-                                            <button className='print-button' onClick={generatePDF}><img src={Print} alt='print'/></button>
+                                            <button className='print-button' onClick={generatePDF}></button>
                                         </div>
                                     </div>
                                     <div>
@@ -355,7 +345,7 @@ const getMidnightDate = (date) => {
                         </PopUp>
                         <div className='work-container-div' style={{flexDirection: "column-reverse"}}>
                             <div className='work-div-1'>
-                                <img className='work-img-div' src={WorkImg} alt='Work'/>
+                                
                                 <a href={'/WorkReport'}>
                                     <button className='coo-button'>WORK REPORTS</button>
                                 </a>
@@ -398,10 +388,10 @@ const getMidnightDate = (date) => {
                         </div>
                         <div className='piechart-mange-div'>
                             <div className='manage-agencie-div' onClick={() => setIsPaneOpen(true)}>
-                                <img className='arrow-img' src={ ArrowLeft }/>
+                                
                                 <div className='mang-div'>
                                     <p className='mang-agen-p'>AGENCIES</p>
-                                    <img className='mange-img' src={ manageWorkers }/>
+                                   
                                 </div>
                             </div>
                         </div>
