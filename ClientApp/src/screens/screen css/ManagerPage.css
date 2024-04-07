@@ -8,11 +8,10 @@
     padding: 1vw;
 }
 
-{/* old css */}
+/* {old css} */
 .ahome1 {
     display: grid;
     align-items: center;
-    background:url( 'TCE_BLUR.png');
     background-size: cover;
     background-repeat: no-repeat;
     padding-bottom: 5px;

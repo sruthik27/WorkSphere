@@ -19,7 +19,7 @@ const NavBar = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link to={"/Home"}>Home</Link>
+                        <Link to={"/ManagerPortal"}>Home</Link>
                     </li>
                     <li>
                         <Link to={"/Work"}>Work</Link>

@@ -100,7 +100,6 @@ C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\staticwebassets.pa
 C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\staticwebassets.development.json
 C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\scopedcss\bundle\WorkManagement.styles.css
-C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\WorkManagement.csproj.CopyComplete
 C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\WorkManagement.dll
 C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\refint\WorkManagement.dll
 C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\WorkManagement.pdb
@@ -163,3 +162,6 @@ C:\Users\sruth\Desktop\Web files\WorkSphere\obj\Debug\net7.0\WorkManagement.genr
 C:\Users\sruth\Desktop\Web files\WorkSphere\obj\Debug\net7.0\ref\WorkManagement.dll
 C:\Users\sruth\Desktop\Web files\WorkSphere\bin\Debug\net7.0\global.json
 C:\Users\sruth\Desktop\Web files\WorkSphere\obj\Debug\net7.0\WorkManagement.sourcelink.json
+C:\Users\kabilan\Desktop\Projects\WorkSphere\bin\Debug\net7.0\global.json
+C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\WorkManagement.sourcelink.json
+C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\WorkMana.C47A950F.Up2Date

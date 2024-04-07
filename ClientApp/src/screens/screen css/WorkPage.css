@@ -6,7 +6,6 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    background:url( 'TCE_BLUR.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;

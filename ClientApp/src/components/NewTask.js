@@ -1,12 +1,8 @@
 import React, {useState, useEffect} from "react";
-import './NewTask.css';
-import './AdminMain.css';
 import Slider from '@mui/material/Slider';
 import routeMappings from "../routeMappings";
 import {useLocation, useNavigate} from 'react-router-dom';
-import Delete from './trash_icon.png';
-import DropUp from "./DropUp.png";
-import DropDown from "./DropDown.png";
+
 
 const NewTask = (props) => {
     const location = useLocation();
@@ -323,7 +319,7 @@ const NewTask = (props) => {
                                             <span >{selectedWorkersNames.length > 0 ? (selectedWorkersNames.map((worker, i) =>(
                                                 i === 0 ? (worker.charAt(0).toUpperCase() + worker.slice(1)) :  (", " + worker.charAt(0).toUpperCase() + worker.slice(1)) 
                                             )) ) : "Select Agencies"}</span>
-                                            <span >{ dropDownIcon ? <img src={DropUp}/> : <img src={DropDown}/> }</span>
+                                            
                                         </div>
                                         {showWorkers && (
                                             <div className="items">
@@ -363,8 +359,6 @@ const NewTask = (props) => {
                                         <div className="subtask-des" key={index}>
                                             <div className="subtask-head-div">
                                                 <h1 className="subtask-des-head">Sub Task {index + 1}</h1>
-                                                <img className="subtask-delete-btn" src={Delete}
-                                                    onClick={() => handleDeleteSubtask(index)}/>
                                             </div>
                                             <p className="subtask-des-des">Description: {subtask.task_name}</p>
                                             <p className="subtask-des-des">Due

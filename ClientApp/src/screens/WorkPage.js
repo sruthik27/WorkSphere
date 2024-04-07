@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import "./AdminMain.css";
-import TaskTable from './TaskTable';
-import {useLocation, useNavigate} from "react-router-dom";
-import routeMappings from "../routeMappings";
-import EXCEL from './excel.png';
+import {useNavigate} from "react-router-dom";
+import "./screen css/WorkPage.css";
+
+//components import
+import NavBar from '../component/NabBar';
 
 
-const AdminMain = () => {
+
+
+const WorkPage = () => {
     const [itemData, setItemData] = useState([]);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -67,18 +69,22 @@ const AdminMain = () => {
                 </div>
              ): (
                 <div>
-                    <button className="go-back-button topNav" onClick={() => navigate(routeMappings["Csjdjovn="],{ state: { fromAdminHome: true } })}>Home</button>
-                    <div className="topNav excel-download" onClick={downloadExcel}>
-                        <p className='excel-title '>Download in Excel:</p>
-                        <img className='excel-logo' src={EXCEL} />
-                    </div>
-                    <div className="tasktable-home">
-                        <TaskTable data={itemData} editable={false}/>
-                    </div>
+                    <NavBar />
+                    
                 </div>
             )}
         </>
     );
 }
 
-export default AdminMain;
+export default WorkPage;
+
+{/* <div>
+    <button className="go-back-button topNav" onClick={() => navigate(routeMappings["Csjdjovn="],{ state: { fromAdminHome: true } })}>Home</button>
+    <div className="topNav excel-download" onClick={downloadExcel}>
+        <p className='excel-title '>Download in Excel:</p>
+    </div>
+    <div className="tasktable-home">
+        <TaskTable data={itemData} editable={false}/>
+    </div>
+</div> */}

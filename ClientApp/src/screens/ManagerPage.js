@@ -2,34 +2,26 @@ import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useLocation, useNavigate, Link} from "react-router-dom";
 import routeMappings from "../routeMappings";
-import "./AdminMain.css";
-import "./NewCoordinator.css";
-import "./TaskTable.css";
-import CreateButton from "./create_btn.gif";
-import WorkImg from "./work_img.gif";
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import Flag from "./flag_icon.svg";
 import {PieChart} from 'react-minimal-pie-chart';
-import ProgressChart from './ProgressChart';
+import ProgressChart from '../components/ProgressChart';
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
-import VerificationCodeDisplay from "./VerificationCodeDisplay";
-import PopUp from './PopUp';
+import VerificationCodeDisplay from "../components/VerificationCodeDisplay";
+import PopUp from '../components/PopUp';
 import {Puff} from 'react-loader-spinner';
 import Switch from "@mui/material/Switch";
-import Print from "./print.svg";
 import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
-import CommentCard from "./CommentCard";
-import Template from './BasePdf';
-import noData from './noDataInActive.png';
-import manageWorkers from './ManageWorkes.png';
-import ArrowLeft from './Arrow.gif';
-import Tooltip from './ToolTip';
+import CommentCard from "../components/CommentCard";
+import Template from '../components/BasePdf';
+import Tooltip from '../components/ToolTip';
 import { text, image, barcodes } from "@pdfme/schemas";
 import { generate } from "@pdfme/generator";
 
 
 //New Imports
+import './screen css/ManagerPage.css';
+
 import NavBar from '../component/NabBar';
 class PuffLoader extends React.Component {
     render() {
@@ -47,7 +39,7 @@ class PuffLoader extends React.Component {
 }
 
 
-const NewCoordinator = () => {
+const ManagerPage = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -354,14 +346,13 @@ const getMidnightDate = (date) => {
             ) : (
                 <div className='dashBoard-Home'>
                     <NavBar />
-                    <h1>HEllo World!</h1>
                 </div>
             )}
         </>
     )
 }
 
-export default NewCoordinator;
+export default ManagerPage;
 
 {/* <div className='container-div'>
                         {topworks.length === 0 ? (

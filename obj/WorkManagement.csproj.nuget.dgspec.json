@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sruth\\Desktop\\Web files\\WorkSphere\\WorkManagement.csproj": {}
+    "C:\\Users\\kabilan\\Desktop\\Projects\\WorkSphere\\WorkManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sruth\\Desktop\\Web files\\WorkSphere\\WorkManagement.csproj": {
+    "C:\\Users\\kabilan\\Desktop\\Projects\\WorkSphere\\WorkManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sruth\\Desktop\\Web files\\WorkSphere\\WorkManagement.csproj",
+        "projectUniqueName": "C:\\Users\\kabilan\\Desktop\\Projects\\WorkSphere\\WorkManagement.csproj",
         "projectName": "WorkManagement",
-        "projectPath": "C:\\Users\\sruth\\Desktop\\Web files\\WorkSphere\\WorkManagement.csproj",
-        "packagesPath": "C:\\Users\\sruth\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sruth\\Desktop\\Web files\\WorkSphere\\obj\\",
+        "projectPath": "C:\\Users\\kabilan\\Desktop\\Projects\\WorkSphere\\WorkManagement.csproj",
+        "packagesPath": "C:\\Users\\kabilan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kabilan\\Desktop\\Projects\\WorkSphere\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sruth\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\kabilan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -104,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
