@@ -3,7 +3,7 @@ import Chart from 'chart.js/auto';
 import 'chartjs-adapter-date-fns';
 import './components css/TimeLineChart.css';
 
-const TimeLineChart = () => {
+const TimeLineChart = ({ Data, backgroundColor, borderColor }) => {
     const chartContainer = useRef(null);
     const [selectedMonth, setSelectedMonth] = useState('');
     const [config, setConfig] = useState(null);
@@ -11,36 +11,9 @@ const TimeLineChart = () => {
     useEffect(() => {
         const data = {
             datasets: [{
-                data: [
-                {x: ['2023-11-02', '2024-01-01'], y: 'Work1', status: 'Completed'},
-                {x: ['2023-11-12', '2023-12-03'], y: 'Work2', status: 'Completed'},
-                {x: ['2023-12-15', '2024-01-15'], y: 'Work3', status: 'Completed'},
-                {x: ['2023-12-25', '2024-01-05'], y: 'Work4', status: 'Completed'},
-                {x: ['2024-01-04', '2024-01-31'], y: 'Work5', status: 'Completed'},
-                {x: ['2024-02-14', '2024-03-12'], y: 'Work6', status: 'Completed'},
-                {x: ['2024-02-28', '2024-03-30'], y: 'Work7', status: 'Delayed'},
-                {x: ['2024-03-05', '2024-04-03'], y: 'Work8', status: 'Completed'},
-                {x: ['2024-03-20', '2024-04-29'], y: 'Work9', status: 'Pending'},
-                {x: ['2024-04-01', '2024-05-12'], y: 'Work10', status: 'Pending'}
-                ],
-                backgroundColor: [
-                'rgba(255, 26, 104, 0.7)',
-                'rgba(54, 162, 235, 0.7)',
-                'rgba(255, 206, 86, 0.7)',
-                'rgba(75, 192, 192, 0.7)',
-                'rgba(153, 102, 255, 0.7)',
-                'rgba(255, 159, 64, 0.7)',
-                'rgba(0, 0, 0, 0.7)'
-                ],
-                borderColor: [
-                'rgba(255, 26, 104, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(0, 0, 0, 1)'
-                ],
+                data: Data,
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
                 borderWidth: 1,
                 borderSkipped: false,
                 borderRadius: 10,
@@ -189,18 +162,16 @@ const TimeLineChart = () => {
     };
 
     return(
-        <div className="chartContainer">
-            <div className="chartCard">
-                <div className="chartBox">
-                    <canvas ref={chartContainer} id="myChart"></canvas>
-                    <input
-                        type="month"
-                        id="monthPicker"
-                        name="monthPicker"
-                        value={selectedMonth}
-                        onChange={handleMonthChange}
-                    />
-                </div>
+        <div className="chartCard">
+            <div className="chartBox">
+                <canvas ref={chartContainer} id="myChart"></canvas>
+                <input
+                    type="month"
+                    id="monthPicker"
+                    name="monthPicker"
+                    value={selectedMonth}
+                    onChange={handleMonthChange}
+                />
             </div>
         </div>
     );
