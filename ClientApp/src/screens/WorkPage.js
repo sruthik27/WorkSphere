@@ -4,9 +4,7 @@ import "./screen css/WorkPage.css";
 
 //components import
 import NavBar from '../component/NabBar';
-
-
-
+import TimeLineChart from '../component/TimeLineChart';
 
 const WorkPage = () => {
     const [itemData, setItemData] = useState([]);
@@ -61,6 +59,20 @@ const WorkPage = () => {
                   });
     }
 
+    const data = [
+        ['term','name', 'start', 'end'],
+        ['1','Work1', new Date(2023, 11, 2), new Date(2024, 1, 1)],
+        ['2','Work2', new Date(2023, 11, 12), new Date(2023, 12, 3)],
+        ['3','Work3', new Date(2023, 12, 15), new Date(2024, 1, 15)],
+        ['4','Work4', new Date(2023, 12, 25), new Date(2024, 1, 5)],
+        ['5','Work5', new Date(2024, 1, 4), new Date(2024, 1, 31)],
+        ['6','Work6', new Date(2024, 2, 14), new Date(2024, 3, 12)],
+        ['7','Work7', new Date(2024, 2, 28), new Date(2024, 3, 30)],
+        ['8','Work8', new Date(2024, 3, 5), new Date(2024, 4, 3)],
+        ['9','Work9', new Date(2024, 3, 20), new Date(2024, 4, 30)],
+        ['10','Work10', new Date(2024, 4, 1), new Date(2024, 5, 12)],
+    ];
+
     return (
         <>
             {loading ? (
@@ -70,7 +82,7 @@ const WorkPage = () => {
              ): (
                 <div>
                     <NavBar />
-                    
+                    <TimeLineChart />
                 </div>
             )}
         </>
