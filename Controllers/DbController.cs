@@ -33,7 +33,7 @@ public class DbController : ControllerBase
     
     
     [HttpPost("checkuserexists")]
-    public async Task<IActionResult> CheckUser([FromBody] int userId){
+    public async Task<IActionResult> CheckUser([FromBody] string userId){
         return Ok(new {found = _context.Users.Find(userId)});
     }
 
