@@ -1,6 +1,7 @@
 import { useContext, createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, signInWithRedirect, signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth } from "../fireBase";
+import {checkUserExists} from "../api_endpoints";
 
 const AuthContext = createContext();
 
@@ -17,9 +18,16 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        const userData = onAuthStateChanged(auth, (currentUser) => {
+        const userData = onAuthStateChanged(auth, async (currentUser) => {
             setUser(currentUser);
-            console.log(currentUser);
+            let doesExist = await checkUserExists(currentUser?.uid);
+            if (doesExist) {
+                //navigate to homepage
+                console.log("already exists");
+            }
+            else{
+                //navigate to user registration
+            }
         });
         return () => {
             userData();
