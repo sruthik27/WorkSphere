@@ -6,15 +6,9 @@ import './screen css/LoginPage.css';
 //compontens imports are below
 import SignInAsButton from "../component/SignInAsButton";
 import UserInput from "../component/UserInput";
-import BlueButton from "../component/BlueButton";
-import CreateAsRadioButton from "../component/CreateAsRadioButton";
 
 //image import
-import Employee from "../Images/Employee_img.svg";
-import Manager from "../Images/Manager_img.svg";
 import Work from "../Images/Work Annimation.gif";
-
-import PopUp from "../component/PopUp";
 import { UserAuth } from "../context/AuthContext";
 
 
@@ -22,33 +16,19 @@ const LoginPage = () => {
 
     const navigate = useNavigate();
 
-    //old Hooks
     const [inputEmail, setInputEmail] = useState("");
     const [inputPassword, setInputPassword] = useState("");
     const [inputCheckbox, setInputCheckbox] = useState(false);
     const [inputLoginFail, setInputLoginFail] = useState("");
     const [whoLogin, setWhoLogin] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-
-    //new Hooks
-    const [createLogin, setCreateLogin] = useState(false);
-    const [userEmailId,setUserEmailId] = useState("");
-    const [userAgency, setUserAgency] = useState("");
-    const [userNewPassword, setUserNewPassword] = useState("");
-    const [userSelectedAs, setUserSelectedAs] = useState("");
-    const [isValid, setIsVaild] = useState(true);
-
+    
     const HandleInputEmail = (e) => {
         setInputEmail(e.target.value);
     }
 
     const HandleInputPassword = (e) => {
         setInputPassword(e.target.value);
-    }
-
-    function isEmail(input) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(input);
     }
 
     const handleForgotPassword = async () => {
@@ -143,49 +123,7 @@ const LoginPage = () => {
     };
 
     const HandleCreateNewLogin = () => {
-        setCreateLogin(true);
-    }
-
-    const HandleCreateNewLoginClose = () => {
-        setCreateLogin(false);
-    }
-
-    const HandleNewUserEmail = (e) => {
-        setUserEmailId(e.target.value);
-    }
-
-    const HandleNewUserAgncy = (e) => {
-        setUserAgency(e.target.value);
-    }
-
-    const HandleNewUserNewPassword = (e) => {
-        setUserNewPassword(e.target.value);
-    }
-
-    const HandleSelectedAs = (e) => {
-        setUserSelectedAs(e.target.value);
-    }
-
-    const HandleNewLoginSubmit = () => {
-        if(!isEmail(userEmailId)) {
-            setIsVaild(false);
-            setTimeout(() => {
-                setIsVaild(true);
-            }, 1000);
-        }
-
-        const newAccount = {
-            Email: userEmailId,
-            Agency: userAgency,
-            password: userNewPassword,
-            selectedAs: userSelectedAs
-        };
-
-        console.log(newAccount);
-        setUserEmailId("");
-        setUserNewPassword("");
-        setUserAgency("");
-        setUserSelectedAs("");
+        navigate('/Registration');
     }
 
     //google signin
@@ -218,7 +156,7 @@ const LoginPage = () => {
                             <div className="glass-info">
                                 <p className="glass-info-title">Leading teams, </p>
                                 <p className="glass-info-title">achieving dreams.</p>
-                                <img className="work-img" src={Work} />
+                                <img className="work-img" src={Work} alt="work-img"/>
                             </div>
                         </div>
                         <div className="login-slide"> 
@@ -252,61 +190,12 @@ const LoginPage = () => {
                                 <p>{inputLoginFail}</p>
                                 <button className="sign-up-button" onClick={HandleSubmit} onKeyDown={HandleEnterSubmit} tabIndex={"0"}>Sign in</button>
                                 <h5>----- or -----</h5>
-                                <p>Don't Have an account? <a><strong onClick={HandleCreateNewLogin}>Register</strong></a></p>
+                                <p>Don't Have an account? <strong onClick={HandleCreateNewLogin}>Register</strong></p>
 
                                 <SignInAsButton 
                                     value={"Google SignIn"}
                                     onClick={handleGoogleSignIn}
                                 />
-                                <PopUp trigger={createLogin} style={{maxWidth: "30vw"}}>
-                                    <div className="close-div">
-                                        <BlueButton onClick={HandleCreateNewLoginClose}>Close</BlueButton>
-                                    </div>
-                                    <h2>Create your account</h2>
-                                    <div className="create-account-div">
-                                        <UserInput 
-                                            title={"Email: "}
-                                            type={"email"}
-                                            value={userEmailId}
-                                            onChange={HandleNewUserEmail}
-                                            placeholder={"Enter your E-mail"}
-                                        />
-                                        <UserInput 
-                                            title={"Organization Name: "}
-                                            type={"text"}
-                                            value={userAgency}
-                                            onChange={HandleNewUserAgncy}
-                                            placeholder={"Enter your Organization Name"}
-                                        />
-                                        <UserInput 
-                                            title={"Create Password: "}
-                                            type={"password"}
-                                            value={userNewPassword}
-                                            onChange={HandleNewUserNewPassword}
-                                            placeholder={"Enter your New Password"}
-                                        />
-                                        <div className="new-signup-radio">
-                                            <CreateAsRadioButton
-                                                name={"signUp"}
-                                                value={"manger"}
-                                                onChange={HandleSelectedAs}
-                                                text={"Manager"}
-                                                src={Manager}
-                                            />
-                                            <CreateAsRadioButton
-                                                name={"signUp"}
-                                                value={"employee"}
-                                                onChange={HandleSelectedAs}
-                                                text={"Employee"}
-                                                src={Employee}
-                                            />
-                                        </div>
-                                    </div>
-                                    {isValid ? "" : <p>Given Email is Invalid</p>}
-                                    <div>
-                                        <BlueButton onClick={HandleNewLoginSubmit}>Submit</BlueButton>
-                                    </div>
-                                </PopUp>
                             </div>
                         </div>
                     </div>
