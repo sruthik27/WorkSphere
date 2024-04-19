@@ -79,6 +79,10 @@ body {
     flex-direction: column;
 }
 
+.login-pad strong {
+    cursor: pointer;
+}
+
 .login-title-1 {
     display: flex;
     font-size: 35px;

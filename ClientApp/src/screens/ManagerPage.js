@@ -65,276 +65,263 @@ const ManagerPage = () => {
     const [padiBills, setPaidBills] = useState(new Map());
 
     useEffect(() => {
-        if (false) {
-            navigate('/');
-        } else {
-            setLoading(true);
-            fetchData();
-            // getWorkers();
-            const isOpen = localStorage.getItem('IsPaneOpen');
-            if (isOpen === 'true') {
-                // Set your state variable accordingly
-                setIsPaneOpen(true);
-                // Optionally, clear the state from localStorage if needed
-                localStorage.removeItem('IsPaneOpen');
-            }
-        }
+        
     }, []);
 
-    const fetchData = async () => {
-    try {
-        const response = await fetch('/db/getworks');
-        const data = await response.json();
+//     const fetchData = async () => {
+//     try {
+//         const response = await fetch('/db/getworks');
+//         const data = await response.json();
 
-        const today = getMidnightDate(new Date());
-        const filteredData = data.filter(item => {
-            const dueDate = getMidnightDate(new Date(item.due_date));
-            return dueDate > today;
-        });
-filteredData.sort((a, b) => new Date(a.due_date) - new Date(b.due_date));
-        setTopworks(filteredData.slice(0, 3));
+//         const today = getMidnightDate(new Date());
+//         const filteredData = data.filter(item => {
+//             const dueDate = getMidnightDate(new Date(item.due_date));
+//             return dueDate > today;
+//         });
+// filteredData.sort((a, b) => new Date(a.due_date) - new Date(b.due_date));
+//         setTopworks(filteredData.slice(0, 3));
 
-        const completed = data.reduce((count, item) => item.work_status === 'C' ? count + 1 : count, 0);
-        setCompletedPercent(completed);
-        setActivePercent(data.length - completed);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    } finally {
-        setLoading(false);
-    }
-};
+//         const completed = data.reduce((count, item) => item.work_status === 'C' ? count + 1 : count, 0);
+//         setCompletedPercent(completed);
+//         setActivePercent(data.length - completed);
+//     } catch (error) {
+//         console.error('Error fetching data:', error);
+//     } finally {
+//         setLoading(false);
+//     }
+// };
 
-const getMidnightDate = (date) => {
-    date.setHours(0, 0, 0, 0);
-    return date;
-};
+// const getMidnightDate = (date) => {
+//     date.setHours(0, 0, 0, 0);
+//     return date;
+// };
 
 
-    const getWorkers = async () => {
-        try {
-            const response = await fetch('/db/getworkers');
-            const data = await response.json();
-            setWorkers(data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    }
+//     const getWorkers = async () => {
+//         try {
+//             const response = await fetch('/db/getworkers');
+//             const data = await response.json();
+//             setWorkers(data);
+//         } catch (error) {
+//             console.error('Error fetching data:', error);
+//         }
+//     }
 
-    const HandleSelectedItem = async (item) => {
+//     const HandleSelectedItem = async (item) => {
         
-        setIsLoading(true);
-        setSelectedItem(item);
-        let fetchedtasks = await fetch(`/db/gettasks?n=${item.work_id}`);
-        let tasks = await fetchedtasks.json();
-        setSelectedSubtasks(tasks);
+//         setIsLoading(true);
+//         setSelectedItem(item);
+//         let fetchedtasks = await fetch(`/db/gettasks?n=${item.work_id}`);
+//         let tasks = await fetchedtasks.json();
+//         setSelectedSubtasks(tasks);
 
-        let fetchedpayments = await fetch(`/db/getpayments?workid=${item.work_id}`);
-        let payments = await fetchedpayments.json();
-        let adv = payments.find(x => x.payment_type === 'A');
-        if (adv !== undefined) {
-            let adv_amt = adv.paid_amount;
-            let adv_date = adv.paid_date;
-            setAdvancePaid(adv_amt);
-            setDateOfPaid(adv_date);
-        } else {
-            setAdvancePaid(0);
-            setDateOfPaid('-');
-        }
+//         let fetchedpayments = await fetch(`/db/getpayments?workid=${item.work_id}`);
+//         let payments = await fetchedpayments.json();
+//         let adv = payments.find(x => x.payment_type === 'A');
+//         if (adv !== undefined) {
+//             let adv_amt = adv.paid_amount;
+//             let adv_date = adv.paid_date;
+//             setAdvancePaid(adv_amt);
+//             setDateOfPaid(adv_date);
+//         } else {
+//             setAdvancePaid(0);
+//             setDateOfPaid('-');
+//         }
 
-        let fetchedcomments = await fetch(`/db/getreviews?workid=${item.work_id}`);
-        let comments = await fetchedcomments.json();
-        if (comments.length > 0) {
-            setSelectedComments(comments);
-        }
-        let currentDate = new Date();
-        let parts = item.due_date.slice(0,10).split('-');
-        let dueDate = new Date(parts[0], parts[1]-1, parts[2]);
-        currentDate.setHours(0,0,0);
-        let diffInTime = dueDate.getTime() - currentDate.getTime();
-        let diffInDays = Math.round(diffInTime / (24 * 60 * 60 * 1000));
-        setDueDateDiff(diffInDays);
-        setIsLoading(false);
-    }
+//         let fetchedcomments = await fetch(`/db/getreviews?workid=${item.work_id}`);
+//         let comments = await fetchedcomments.json();
+//         if (comments.length > 0) {
+//             setSelectedComments(comments);
+//         }
+//         let currentDate = new Date();
+//         let parts = item.due_date.slice(0,10).split('-');
+//         let dueDate = new Date(parts[0], parts[1]-1, parts[2]);
+//         currentDate.setHours(0,0,0);
+//         let diffInTime = dueDate.getTime() - currentDate.getTime();
+//         let diffInDays = Math.round(diffInTime / (24 * 60 * 60 * 1000));
+//         setDueDateDiff(diffInDays);
+//         setIsLoading(false);
+//     }
 
-    const handleOnDragEnd = (result) => {
-        if (!result.destination) return;
-        const items = Array.from(selectedSubtasks);
-        const [reorderedItem] = items.splice(result.source.index, 1);
-        items.splice(result.destination.index, 0, reorderedItem);
-        setSelectedSubtasks(items);
-        setOrderChanged(true);
-    };
+//     const handleOnDragEnd = (result) => {
+//         if (!result.destination) return;
+//         const items = Array.from(selectedSubtasks);
+//         const [reorderedItem] = items.splice(result.source.index, 1);
+//         items.splice(result.destination.index, 0, reorderedItem);
+//         setSelectedSubtasks(items);
+//         setOrderChanged(true);
+//     };
 
-    const handleToggle = () => {
-        setIsChecked(!isChecked);
-    };
+//     const handleToggle = () => {
+//         setIsChecked(!isChecked);
+//     };
 
-    const generatePDF = () => {
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth() + 1;
-        const day = currentDate.getDate();
-        const formattedMonth = month < 10 ? `0${month}` : month;
-        const formattedDay = day < 10 ? `0${day}` : day;
-        const formattedDate = `${formattedMonth}/${formattedDay}/${year}`;
-
-
-        (async () => {
-  const template = Template;
-
-      const plugins = { text, image, qrcode: barcodes.qrcode };
-      const inputs = [
-      {
-        "field1": selectedItem.work_name,
-        "field2": "Rs." + selectedItem.wage.toString(),
-        "field3": (advancePaid === 0 ? "No" : "Rs." + advancePaid),
-        "field4": (dateOfPaid === '-' ? "-" : dateOfPaid.slice(0, 10)),
-        "field5": (selectedItem.bill_paid ? "Yes" : "No"),
-        "field6": selectedItem.start_date.slice(0, 10),
-        "field7": selectedItem.due_date.slice(0, 10),
-        "field8": (selectedItem.work_status === 'A' ? "Active Task" : "Completed Task"),
-        "field9": selectedItem.coordinator,
-        "field10": selectedItem.worker_names,
-        "field11": selectedSubtasks.length.toString(),
-        "field12": selectedItem.work_description,
-        "field13": 'Downloaded on ' + formattedDate
-      }
-    ];
-
-       const pdf = await generate({ template, plugins, inputs });
-
-    // Set the PDF name as work_name
-    const fileName = selectedItem.work_name + '.pdf';
-
-    const blob = new Blob([pdf.buffer], { type: 'application/pdf' });
-
-    // Create a link element and trigger a click to download the PDF
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = fileName;
-    link.click();
-  })();
-    };
+//     const generatePDF = () => {
+//         const currentDate = new Date();
+//         const year = currentDate.getFullYear();
+//         const month = currentDate.getMonth() + 1;
+//         const day = currentDate.getDate();
+//         const formattedMonth = month < 10 ? `0${month}` : month;
+//         const formattedDay = day < 10 ? `0${day}` : day;
+//         const formattedDate = `${formattedMonth}/${formattedDay}/${year}`;
 
 
-    const handleClose = () => {
-        setSelectedItem(null);
-        setSelectedComments([]);
-        if (orderChanged) {
-            selectedSubtasks.map((v, i) => {
-                const url = `/db/updateorder?task_id=${v.task_id}&new_order=${i + 1}`;
+//         (async () => {
+//   const template = Template;
 
-                fetch(url, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Network response was not ok");
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        console.log("Success:", data);
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error);
-                    });
-            });
-            setOrderChanged(false);
-        }
-        if (padiBills.has(selectedItem.work_id)) {
-            var requestOptions = {
-                method: 'PUT',
-                redirect: 'follow'
-            };
+//       const plugins = { text, image, qrcode: barcodes.qrcode };
+//       const inputs = [
+//       {
+//         "field1": selectedItem.work_name,
+//         "field2": "Rs." + selectedItem.wage.toString(),
+//         "field3": (advancePaid === 0 ? "No" : "Rs." + advancePaid),
+//         "field4": (dateOfPaid === '-' ? "-" : dateOfPaid.slice(0, 10)),
+//         "field5": (selectedItem.bill_paid ? "Yes" : "No"),
+//         "field6": selectedItem.start_date.slice(0, 10),
+//         "field7": selectedItem.due_date.slice(0, 10),
+//         "field8": (selectedItem.work_status === 'A' ? "Active Task" : "Completed Task"),
+//         "field9": selectedItem.coordinator,
+//         "field10": selectedItem.worker_names,
+//         "field11": selectedSubtasks.length.toString(),
+//         "field12": selectedItem.work_description,
+//         "field13": 'Downloaded on ' + formattedDate
+//       }
+//     ];
 
-            fetch(`/db/updatebill?workid=${selectedItem.work_id}`, requestOptions)
-                .then(response => response.text())
-                .then(result => console.log(result))
-                .catch(error => console.log('error', error));
-        }
-        window.location.reload();
-    }
+//        const pdf = await generate({ template, plugins, inputs });
 
-    const handleSubmit = () => {
-        var requestOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                payment_type: 'A',
-                paid_amount: enteredAdvance,
-                paid_date: enteredDate.toISOString(),
-                work: selectedItem.work_id,
-            }),
-            redirect: 'follow'
-        };
+//     // Set the PDF name as work_name
+//     const fileName = selectedItem.work_name + '.pdf';
 
-        fetch("/db/addpayment", requestOptions)
-            .then(response => response.text())
-            .then(result => {
-                setIsChecked(false);
-            })
-            .catch(error => console.log('error', error));
-        setAdvancePaid(enteredAdvance);
-        setDateOfPaid(enteredDate.toISOString());
-    }
+//     const blob = new Blob([pdf.buffer], { type: 'application/pdf' });
 
-    const handleBill = () => {
-        if (padiBills.has(selectedItem.work_id)) {
-            padiBills.delete(selectedItem.work_id);
-        } else {
-            padiBills.set(selectedItem.work_id, true);
-        }
-    }
+//     // Create a link element and trigger a click to download the PDF
+//     const link = document.createElement('a');
+//     link.href = URL.createObjectURL(blob);
+//     link.download = fileName;
+//     link.click();
+//   })();
+//     };
 
 
-    const updateVerificationCode = async () => {
-        const endpoint = '/db/updatevcode';
-        try {
-            const requestBody = {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({}),
-            };
-            const response = await fetch(endpoint, requestBody);
-            if (response.ok) {
-                localStorage.setItem('IsPaneOpen', 'true');
-            } else {
-                console.error('Update failed:', response.statusText);
-            }
-        } catch (error) {
-            console.error('An error occurred:', error);
-        }
-        window.location.reload();
-    }
+//     const handleClose = () => {
+//         setSelectedItem(null);
+//         setSelectedComments([]);
+//         if (orderChanged) {
+//             selectedSubtasks.map((v, i) => {
+//                 const url = `/db/updateorder?task_id=${v.task_id}&new_order=${i + 1}`;
 
-    const HandleForward = () => {
-        navigate(routeMappings["bHWtcH10="], );
-    }
+//                 fetch(url, {
+//                     method: "PUT",
+//                     headers: {
+//                         "Content-Type": "application/json",
+//                     },
+//                 })
+//                     .then((response) => {
+//                         if (!response.ok) {
+//                             throw new Error("Network response was not ok");
+//                         }
+//                         return response.json();
+//                     })
+//                     .then((data) => {
+//                         console.log("Success:", data);
+//                     })
+//                     .catch((error) => {
+//                         console.error("Error:", error);
+//                     });
+//             });
+//             setOrderChanged(false);
+//         }
+//         if (padiBills.has(selectedItem.work_id)) {
+//             var requestOptions = {
+//                 method: 'PUT',
+//                 redirect: 'follow'
+//             };
 
-    const handleAssignClick = (workerString) => {
-        navigate('/NewTask', { state: { worker: workerString } });
-    };
+//             fetch(`/db/updatebill?workid=${selectedItem.work_id}`, requestOptions)
+//                 .then(response => response.text())
+//                 .then(result => console.log(result))
+//                 .catch(error => console.log('error', error));
+//         }
+//         window.location.reload();
+//     }
 
-    const HandleUndo = async (subtask) => {
-        var requestOptions = {
-            method: 'PUT',
-            redirect: 'follow'
-        };
+//     const handleSubmit = () => {
+//         var requestOptions = {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify({
+//                 payment_type: 'A',
+//                 paid_amount: enteredAdvance,
+//                 paid_date: enteredDate.toISOString(),
+//                 work: selectedItem.work_id,
+//             }),
+//             redirect: 'follow'
+//         };
 
-        await fetch(`/db/undotaskcomplete?task_id=${subtask.task_id}`, requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
-        handleClose();
-    }
+//         fetch("/db/addpayment", requestOptions)
+//             .then(response => response.text())
+//             .then(result => {
+//                 setIsChecked(false);
+//             })
+//             .catch(error => console.log('error', error));
+//         setAdvancePaid(enteredAdvance);
+//         setDateOfPaid(enteredDate.toISOString());
+//     }
+
+//     const handleBill = () => {
+//         if (padiBills.has(selectedItem.work_id)) {
+//             padiBills.delete(selectedItem.work_id);
+//         } else {
+//             padiBills.set(selectedItem.work_id, true);
+//         }
+//     }
+
+
+//     const updateVerificationCode = async () => {
+//         const endpoint = '/db/updatevcode';
+//         try {
+//             const requestBody = {
+//                 method: 'PUT',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                 },
+//                 body: JSON.stringify({}),
+//             };
+//             const response = await fetch(endpoint, requestBody);
+//             if (response.ok) {
+//                 localStorage.setItem('IsPaneOpen', 'true');
+//             } else {
+//                 console.error('Update failed:', response.statusText);
+//             }
+//         } catch (error) {
+//             console.error('An error occurred:', error);
+//         }
+//         window.location.reload();
+//     }
+
+//     const HandleForward = () => {
+//         navigate(routeMappings["bHWtcH10="], );
+//     }
+
+//     const handleAssignClick = (workerString) => {
+//         navigate('/NewTask', { state: { worker: workerString } });
+//     };
+
+//     const HandleUndo = async (subtask) => {
+//         var requestOptions = {
+//             method: 'PUT',
+//             redirect: 'follow'
+//         };
+
+//         await fetch(`/db/undotaskcomplete?task_id=${subtask.task_id}`, requestOptions)
+//             .then(response => response.text())
+//             .then(result => console.log(result))
+//             .catch(error => console.log('error', error));
+//         handleClose();
+//     }
 
 
     return (

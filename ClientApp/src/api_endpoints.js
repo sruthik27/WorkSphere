@@ -22,7 +22,7 @@ export async function addUser(user_id, email, password, role) {
     }
 
     const responseData = await response.json();
-    console.log(responseData.message); // Assuming you want to log the message
+    return (responseData.message); // Assuming you want to log the message
     // You can handle the success response here
   } catch (error) {
     console.error('Error:', error.message);
@@ -46,7 +46,7 @@ export async function checkUserExists(userId) {
     }
 
     const responseData = await response.json();
-    console.log(responseData); // Assuming you want to log the response
+    return (responseData); // Assuming you want to log the response
     // You can handle the response data here
   } catch (error) {
     console.error('Error:', error.message);

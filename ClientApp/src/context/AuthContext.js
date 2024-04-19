@@ -1,11 +1,14 @@
 import { useContext, createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, signInWithRedirect, signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth } from "../fireBase";
-import {checkUserExists} from "../api_endpoints";
+import { addUser, checkUserExists } from "../api_endpoints";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+
+    const navigate = useNavigate();
     const [user, setUser] = useState({});
 
     const googleSignIn = () => {
@@ -19,14 +22,21 @@ export const AuthContextProvider = ({ children }) => {
 
     useEffect(() => {
         const userData = onAuthStateChanged(auth, async (currentUser) => {
+            console.log(currentUser, 'current');
             setUser(currentUser);
-            let doesExist = await checkUserExists(currentUser?.uid);
-            if (doesExist) {
-                //navigate to homepage
-                console.log("already exists");
-            }
-            else{
-                //navigate to user registration
+            if (currentUser !== null) {
+                console.log(currentUser.uid, "current user uid");
+                let doesExist = await checkUserExists(currentUser?.uid);
+                console.log(doesExist, 'exist');
+                if (doesExist.found !== null) {
+                    //navigate to homepage
+                    navigate('/ManagerPortal');
+                    
+                }
+                else{
+                    //navigate to user registration
+                    navigate('/Registration');
+                }
             }
         });
         return () => {
