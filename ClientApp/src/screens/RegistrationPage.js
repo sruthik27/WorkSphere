@@ -113,7 +113,7 @@ const ReagistrationPage = () => {
                         />
                     </div>
                 </div>
-                {isValid ? "" : <p>Given Email is Invalid</p>}
+                {isValid ? "" : <p>Given Email is Invalid!</p>}
                 <div>
                     <BlueButton onClick={HandleNewLoginSubmit}>Submit</BlueButton>
                 </div>
