@@ -22,7 +22,7 @@ export async function addUser(user_id, email, password, role) {
     }
 
     const responseData = await response.json();
-    return (responseData.message); // Assuming you want to log the message
+    return (responseData);
     // You can handle the success response here
   } catch (error) {
     console.error('Error:', error.message);
@@ -32,7 +32,7 @@ export async function addUser(user_id, email, password, role) {
 
 export async function checkUserExists(userId) {
   try {
-    const response = await fetch('/db/checkuserexists', {
+    const response = await fetch('/db/checkgoogleuserexists', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -44,13 +44,40 @@ export async function checkUserExists(userId) {
       const errorMessage = await response.text();
       throw new Error(errorMessage);
     }
-
-    const responseData = await response.json();
-    return (responseData); // Assuming you want to log the response
+    return await response.json();
     // You can handle the response data here
   } catch (error) {
     console.error('Error:', error.message);
     // You can handle the error here
   }
 }
+
+export async function loginUser (email,password) {
+  const loginData = {
+    useremail:email,
+    userpassword:password
+  }
+  try {
+    const response = await fetch('/db/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(loginData)
+    });
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(errorMessage);
+    }
+
+    const responseData = await response.json();
+    return (responseData);
+    // You can handle the success response here
+  } catch (error) {
+    console.error('Error:', error.message);
+    // You can handle the error here
+  }
+}
+
 

@@ -31,21 +31,70 @@ public class DbController : ControllerBase
         _context = context;
     }
     
-    
-    [HttpPost("checkuserexists")]
-    public async Task<IActionResult> CheckUser([FromBody] string userId){
-        return Ok(new {found = _context.Users.Find(userId)});
+    //To check if user already exists or new user
+    [HttpPost("checkgoogleuserexists")]
+    public async Task<IActionResult> CheckUser([FromBody] string userId)
+    {
+        var found = _context.Users.Find(userId);
+        if (found!=null)
+        {
+            var response = new { exists = true, found.role };
+            return Ok(response);
+        }
+        return Ok(new {exists = false});
     }
 
+    //To add new user to db
     [HttpPost("adduser")]
     public async Task<IActionResult> AddUser([FromBody] User user)
     {
-        if (user==null)
+        if (user.user_id == user.password)
         {
-            return BadRequest("Invalid user data.");
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+            return Ok(new { done = true });
         }
-        _context.Add(user);
+        var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.password);
+        var newUser = new User
+            {
+                email = user.email,
+                password = hashedPassword,
+                role = user.role
+            };
+        _context.Users.Add(newUser);
         _context.SaveChanges();
-        return Ok(new { message = "User added succesfully" });
+        return Ok(new { done = true});
     }
+
+    //To authenticate and login a user
+    public class LoginCred
+    {
+        public string useremail { get; set; }
+        public string userpassword { get; set; }
+    }
+
+    [Route("login")]
+    [HttpPost]
+    public async Task<IActionResult> Login([FromBody] LoginCred cred)
+    {
+        // Get the WLogin object for the given email.
+        var user = _context.Users.FirstOrDefault(u => u.email == cred.useremail);
+        // If the User object is null, then the user does not exist.
+        if (user == null)
+        {
+            return NotFound();
+        }
+        // Verify the password.
+        bool isPasswordValid = BCrypt.Net.BCrypt.Verify(cred.userpassword, user.password);
+
+        // If the password is not valid, then the user is not authorized.
+        if (!isPasswordValid)
+        {
+            return Unauthorized();
+        }
+
+        // Return the worker ID.
+        return Ok(new {exists=true,id=user.user_id});
+    }
+
 }

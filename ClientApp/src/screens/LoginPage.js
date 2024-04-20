@@ -10,6 +10,7 @@ import UserInput from "../component/UserInput";
 //image import
 import Work from "../Images/Work Annimation.gif";
 import { UserAuth } from "../context/AuthContext";
+import {loginUser} from "../api_endpoints";
 
 
 const LoginPage = () => {
@@ -76,49 +77,8 @@ const LoginPage = () => {
     const HandleSubmit = async () => {
         // Create an object with the login data
         setIsLoading(true);
-        const loginData = {
-            email: inputEmail,
-            password: inputPassword
-        };
-
-        // Make a POST request to your API
-        await fetch("/db/verify", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(loginData),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                if (data.redirectTo) {
-                    //set remember me cookie if checkbox enabled
-                    if (inputCheckbox) {
-                        // User wants to remember login
-                        setRememberMeCookie(data.where);
-                    }
-                    // Navigate to the specified route using React Router
-                    navigate(data.redirectTo);
-
-                } else {
-                    // console.log('Authentication failed');
-                    setInputLoginFail("Invalid Email or Password");
-                    setTimeout(() => {
-                        window.location.reload();
-                        setInputLoginFail("");
-                    },2000);
-                    // Handle authentication failure (e.g., display an error message)
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                // Handle any errors that occur during the HTTP request
-            })
+        const res = await loginUser(inputEmail,inputPassword);
+        console.log(res);
         setIsLoading(false);
     };
 

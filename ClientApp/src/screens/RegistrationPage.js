@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -20,10 +21,10 @@ const ReagistrationPage = () => {
     const [userSelectedAs, setUserSelectedAs] = useState("");
     const [isValid, setIsVaild] = useState(true);
 
-    function isEmail(input) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(input);
-    }
+    // function isEmail(input) {
+    //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //     return emailRegex.test(input);
+    // }
 
     const HandleNewUserEmail = (e) => {
         setUserEmailId(e.target.value);
@@ -38,36 +39,30 @@ const ReagistrationPage = () => {
     }
 
     const HandleNewLoginSubmit = async () => {
-        if(!isEmail(userEmailId)) {
-            setIsVaild(false);
-            setTimeout(() => {
-                setIsVaild(true);
-            }, 1000);
-        }
+        // if(!isEmail(userEmailId)) {
+        //     setIsVaild(false);
+        //     setTimeout(() => {
+        //         setIsVaild(true);
+        //     }, 1000);
+        // }
 
-        const newAccount = {
-            Email: userEmailId,
-            password: userNewPassword,
-            selectedAs: userSelectedAs
-        };
-
-        console.log(newAccount);
-        setUserEmailId("");
-        setUserNewPassword("");
-        setUserSelectedAs("");
         if (auth.currentUser !== null) {
             const response = await addUser(auth.currentUser.uid, auth.currentUser.email, auth.currentUser.uid, userSelectedAs);
             console.log(response, 'from register');
-            if (response === 'User added succesfully') {
+            if (response.done) {
                 navigate('/ManagerPortal');
             }
         }
         else {
-            const ResResponse = await addUser(null, userEmailId, userNewPassword, userSelectedAs);
-            if (ResResponse === 'User added succesfully') {
+            const response = await addUser(null, userEmailId, userNewPassword, userSelectedAs);
+            console.log(response);
+            if (response.done) {
                 navigate('/');
             }
         }
+        setUserEmailId("");
+        setUserNewPassword("");
+        setUserSelectedAs("");
     }
 
     return(

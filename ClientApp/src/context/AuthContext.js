@@ -22,16 +22,15 @@ export const AuthContextProvider = ({ children }) => {
 
     useEffect(() => {
         const userData = onAuthStateChanged(auth, async (currentUser) => {
-            console.log(currentUser, 'current');
             setUser(currentUser);
             if (currentUser !== null) {
+                console.log(currentUser);
                 console.log(currentUser.uid, "current user uid");
-                let doesExist = await checkUserExists(currentUser?.uid);
-                console.log(doesExist, 'exist');
-                if (doesExist.found !== null) {
+                let doesExist = await checkUserExists(currentUser.uid);
+                console.log(doesExist);
+                if (doesExist.exists) {
                     //navigate to homepage
                     navigate('/ManagerPortal');
-                    
                 }
                 else{
                     //navigate to user registration
