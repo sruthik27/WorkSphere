@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kabilan\\Desktop\\Projects\\WorkSphere\\WorkManagement.csproj": {}
+    "C:\\Users\\sruth\\Desktop\\Web files\\WorkSphere\\WorkManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kabilan\\Desktop\\Projects\\WorkSphere\\WorkManagement.csproj": {
+    "C:\\Users\\sruth\\Desktop\\Web files\\WorkSphere\\WorkManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kabilan\\Desktop\\Projects\\WorkSphere\\WorkManagement.csproj",
+        "projectUniqueName": "C:\\Users\\sruth\\Desktop\\Web files\\WorkSphere\\WorkManagement.csproj",
         "projectName": "WorkManagement",
-        "projectPath": "C:\\Users\\kabilan\\Desktop\\Projects\\WorkSphere\\WorkManagement.csproj",
-        "packagesPath": "C:\\Users\\kabilan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kabilan\\Desktop\\Projects\\WorkSphere\\obj\\",
+        "projectPath": "C:\\Users\\sruth\\Desktop\\Web files\\WorkSphere\\WorkManagement.csproj",
+        "packagesPath": "C:\\Users\\sruth\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sruth\\Desktop\\Web files\\WorkSphere\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kabilan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\sruth\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -32,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -70,6 +65,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.11, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.7.33, )"
             }
           },
           "imports": [
@@ -86,19 +85,19 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.17, 7.0.17]"
+              "version": "[7.0.18, 7.0.18]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[7.0.17, 7.0.17]"
+              "version": "[7.0.18, 7.0.18]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.17, 7.0.17]"
+              "version": "[7.0.18, 7.0.18]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.17, 7.0.17]"
+              "version": "[7.0.18, 7.0.18]"
             }
           ],
           "frameworkReferences": {
@@ -109,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.104\\RuntimeIdentifierGraph.json"
         }
       }
     }

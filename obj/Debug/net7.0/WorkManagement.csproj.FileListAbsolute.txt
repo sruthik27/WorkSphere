@@ -165,3 +165,5 @@ C:\Users\sruth\Desktop\Web files\WorkSphere\obj\Debug\net7.0\WorkManagement.sour
 C:\Users\kabilan\Desktop\Projects\WorkSphere\bin\Debug\net7.0\global.json
 C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\WorkManagement.sourcelink.json
 C:\Users\kabilan\Desktop\Projects\WorkSphere\obj\Debug\net7.0\WorkMana.C47A950F.Up2Date
+C:\Users\sruth\Desktop\Web files\WorkSphere\bin\Debug\net7.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\sruth\Desktop\Web files\WorkSphere\bin\Debug\net7.0\StackExchange.Redis.dll

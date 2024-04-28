@@ -2,7 +2,7 @@
 "SpaProxyServer": {
 "ServerUrl": "https://localhost:44487",
 "LaunchCommand": "npm start",
-"WorkingDirectory": "C:\\Users\\kabilan\\Desktop\\Projects\\WorkSphere\\ClientApp\\",
+"WorkingDirectory": "C:\\Users\\sruth\\Desktop\\Web files\\WorkSphere\\ClientApp\\",
 "MaxTimeoutInSeconds": "120"
 }
 }
