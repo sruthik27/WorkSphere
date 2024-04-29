@@ -4,6 +4,7 @@ using WorkManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using MailKit.Net.Smtp;
 using System.IO;
+using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -51,12 +52,26 @@ public class DbController : ControllerBase
     [HttpPost("adduser")]
     public async Task<IActionResult> AddUser([FromBody] User user)
     {
-        if (user.user_id == user.password)
+        if (user.user_id == user.password && _context.Users.FirstOrDefault(u=> u.user_id==user.user_id)== null)
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return Ok(new { done = true });
         }
+
+        if (_context.Users.FirstOrDefault(u => u.user_id == user.user_id) != null)
+        {
+            var existingUser = _context.Users.FirstOrDefault(u => u.user_id == user.user_id);
+            if (!user.verified)
+            {
+                _context.Users.Remove(existingUser);
+                _context.SaveChanges();
+            }
+            else
+            {
+                return StatusCode(409, "Email address already exists. Please try logging in or use a different email.");
+            }
+            }
         var verificationToken = Guid.NewGuid().ToString();
         var hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.password);
         var newUser = new User
@@ -110,7 +125,8 @@ public class DbController : ControllerBase
         return Ok(new {allow=true,id=user.user_id});
     }
     
-    [HttpPost("verify")]
+    [Route("verify")]
+    [HttpGet]
     public async Task<IActionResult> VerifyUser([FromQuery] string token)
     {
         // Assuming you have a reference to the Redis database
@@ -118,6 +134,7 @@ public class DbController : ControllerBase
 
         // Retrieve the email associated with the verification token from Redis
         var email = await redisDb.StringGetAsync($"reg_verification:{token}");
+        Console.WriteLine($"Retrived email = {email}");
         if (email.IsNullOrEmpty)
         {
             // Token not found or expired
@@ -125,7 +142,7 @@ public class DbController : ControllerBase
         }
 
         // Retrieve the user from the database based on the email
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.email == email);
+        var user = _context.Users.FirstOrDefault(u => u.email == email.ToString());
         if (user == null)
         {
             return NotFound("User not found.");
