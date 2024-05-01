@@ -47,6 +47,7 @@ const ReagistrationPage = () => {
         // }
 
         if (auth.currentUser !== null) {
+            console.log(auth.currentUser.uid, auth.currentUser.email);
             const response = await addUser(auth.currentUser.uid, auth.currentUser.email, auth.currentUser.uid, userSelectedAs);
             console.log(response, 'from register');
             if (response.done) {

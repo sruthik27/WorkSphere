@@ -11,16 +11,16 @@ import ReagistrationPage from './screens/RegistrationPage';
 import NewAdmin from "./components/NewAdmin";
 import { AuthContextProvider } from './context/AuthContext';
 import Protected from './context/Protected';
+import Protect from './context/Protect';
 
 function App() {
-  const [num, setNum] = useState(1);
-  console.log(num);
+  
 
   return (
     <div>
       <AuthContextProvider>
         <Routes>
-          <Route path='/' element={ <LoginPage setNum={setNum} num={num}/> }/>
+          <Route path='/' element={ <LoginPage /> }/>
           <Route path='/coordinator' element={ <Coordinator/> }/>
           <Route path='/Work' element={ <Protected><WorkPage /></Protected> }/>
           <Route path='/ManagerPortal' element={ <Protected><ManagerPage/></Protected> }/>
@@ -29,6 +29,10 @@ function App() {
           <Route path='/NewTask' element={ <Protected><NewTask/> </Protected>}/>
           <Route path='/WorkReport' element={ <Protected><WorkReport/></Protected> }/>
           <Route path='/ResetPassword/:id' element={ <ResetPassword/> }/>
+
+          {/* route for  */}
+          <Route path='/Manager' element={ <Protect><ManagerPage/></Protect>}/>
+          <Route path='/WorkPage' element={ <Protect><WorkPage /></Protect> }/>
         </Routes>
       </AuthContextProvider>
     </div>

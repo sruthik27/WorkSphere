@@ -2,7 +2,6 @@ import React, {useContext, useEffect} from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './screen css/LoginPage.css';
-import { AuthContext } from "../context/AuthContext";
 
 //compontens imports are below
 import SignInAsButton from "../component/SignInAsButton";
@@ -13,6 +12,7 @@ import useLocalStorage from "../context/useLocalStorage";
 import Work from "../Images/Work Annimation.gif";
 import { UserAuth } from "../context/AuthContext";
 import {loginUser} from "../api_endpoints";
+import { data } from "jquery";
 
 
 const LoginPage = () => {
@@ -21,7 +21,7 @@ const LoginPage = () => {
 
     //google signin
     const { googleSignIn, user } = UserAuth();
-    const { setItem } = useLocalStorage('Login');
+    const { setItem, getItem } = useLocalStorage('Login');
 
     const [inputEmail, setInputEmail] = useState("");
     const [inputPassword, setInputPassword] = useState("");
@@ -84,7 +84,10 @@ const LoginPage = () => {
         // Create an object with the login data
         setIsLoading(true);
         const res = await loginUser(inputEmail,inputPassword);
-        setItem(res);
+        setItem(res.id);
+        if(res.id !== null) {
+            navigate('/Manager');
+        }
         setIsLoading(false);
     };
 
@@ -93,10 +96,16 @@ const LoginPage = () => {
     }
 
     useEffect(() => {
+        const data = getItem();
+
+        if(data != null) {
+            navigate('/Manager');
+        }
+
         if(user != null) {
             navigate('/ManagerPortal');
         }
-    }, [user]);
+    }, [user, data]);
 
     const handleGoogleSignIn = async () => {
         try {
