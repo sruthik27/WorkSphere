@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import LoginPage from './screens/LoginPage';
 import WorkPage from './screens/WorkPage';
@@ -13,11 +13,14 @@ import { AuthContextProvider } from './context/AuthContext';
 import Protected from './context/Protected';
 
 function App() {
+  const [num, setNum] = useState(1);
+  console.log(num);
+
   return (
     <div>
       <AuthContextProvider>
         <Routes>
-          <Route path='/' element={ <LoginPage/> }/>
+          <Route path='/' element={ <LoginPage setNum={setNum} num={num}/> }/>
           <Route path='/coordinator' element={ <Coordinator/> }/>
           <Route path='/Work' element={ <Protected><WorkPage /></Protected> }/>
           <Route path='/ManagerPortal' element={ <Protected><ManagerPage/></Protected> }/>

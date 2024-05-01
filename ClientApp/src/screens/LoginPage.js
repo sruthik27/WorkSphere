@@ -1,11 +1,13 @@
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './screen css/LoginPage.css';
+import { AuthContext } from "../context/AuthContext";
 
 //compontens imports are below
 import SignInAsButton from "../component/SignInAsButton";
 import UserInput from "../component/UserInput";
+import useLocalStorage from "../context/useLocalStorage";
 
 //image import
 import Work from "../Images/Work Annimation.gif";
@@ -16,6 +18,10 @@ import {loginUser} from "../api_endpoints";
 const LoginPage = () => {
 
     const navigate = useNavigate();
+
+    //google signin
+    const { googleSignIn, user } = UserAuth();
+    const { setItem } = useLocalStorage('Login');
 
     const [inputEmail, setInputEmail] = useState("");
     const [inputPassword, setInputPassword] = useState("");
@@ -78,7 +84,7 @@ const LoginPage = () => {
         // Create an object with the login data
         setIsLoading(true);
         const res = await loginUser(inputEmail,inputPassword);
-        console.log(res);
+        setItem(res);
         setIsLoading(false);
     };
 
@@ -86,9 +92,6 @@ const LoginPage = () => {
         navigate('/Registration');
     }
 
-    //google signin
-    const { googleSignIn, user } = UserAuth();
-    
     useEffect(() => {
         if(user != null) {
             navigate('/ManagerPortal');

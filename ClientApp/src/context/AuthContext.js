@@ -4,7 +4,7 @@ import { auth } from "../fireBase";
 import { addUser, checkUserExists } from "../api_endpoints";
 import { useNavigate } from "react-router-dom";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 
@@ -44,7 +44,7 @@ export const AuthContextProvider = ({ children }) => {
     }, []);
 
     return(
-        <AuthContext.Provider value={{ googleSignIn, logOut, user }}>
+        <AuthContext.Provider value={{ googleSignIn, logOut, user, setUser }}>
             { children }
         </AuthContext.Provider>
     );
