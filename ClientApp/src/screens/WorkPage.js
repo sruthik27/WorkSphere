@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import "./screen css/WorkPage.css";
 
 //components import
@@ -110,6 +110,7 @@ const WorkPage = () => {
                             ]
                         }
                     />
+                    <Link to={'/NewWork'}>Create Work</Link>
                 </div>
             )}
         </>

@@ -21,6 +21,7 @@ import { generate } from "@pdfme/generator";
 
 //New Imports
 import './screen css/ManagerPage.css';
+import { generateToken } from '../fireBase';
 
 import NavBar from '../component/NabBar';
 class PuffLoader extends React.Component {
@@ -322,7 +323,10 @@ const ManagerPage = () => {
 //             .catch(error => console.log('error', error));
 //         handleClose();
 //     }
-
+    //permission and generating token
+    useEffect(() => {
+        generateToken();
+    }, []);
 
     return (
         <>

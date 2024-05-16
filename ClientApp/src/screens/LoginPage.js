@@ -97,7 +97,6 @@ const LoginPage = () => {
 
     useEffect(() => {
         const data = getItem();
-
         if(data != null) {
             navigate('/Manager');
         }
